@@ -188,8 +188,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Appointments.cs" />
+    <Compile Include="Models\Departments.cs" />
+    <Compile Include="Models\Employees.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Patients.cs" />
+    <Compile Include="Models\PaySlips.cs" />
+    <Compile Include="Models\Perscription.cs" />
+    <Compile Include="Models\Rooms.cs" />
+    <Compile Include="Models\Services.cs" />
+    <Compile Include="Models\Shifts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
