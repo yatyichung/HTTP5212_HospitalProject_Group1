@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HTTP5212_HospitalProject_Team1.Models
 {
-    public class Employees
+    public class Employee
     {
     }
 }
