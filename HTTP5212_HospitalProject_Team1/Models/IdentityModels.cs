@@ -25,6 +25,9 @@ namespace HTTP5212_HospitalProject_Team1.Models
         {
         }
 
+
+        public DbSet<PaySlip> PaySlips { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
