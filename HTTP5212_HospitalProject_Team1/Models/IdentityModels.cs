@@ -27,6 +27,7 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
 
         public DbSet<PaySlip> PaySlips { get; set; }
+        public DbSet<Shift> Shifts { get; set; }
 
         public static ApplicationDbContext Create()
         {
