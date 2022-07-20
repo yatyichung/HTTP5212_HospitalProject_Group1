@@ -15,7 +15,7 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
         public string RoomType { get; set; }
 
-        public int BlockFloor { get; set; }
+        public int RoomNumber { get; set; }
 
         public bool Availability { get; set; }
     }
