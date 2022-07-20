@@ -32,6 +32,10 @@ namespace HTTP5212_HospitalProject_Team1.Models
         public DbSet<Department> Departments { get; set; }
         public DbSet<Service> Services { get; set; }
 
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Perscription> Perscriptions { get; set; }
+
+
 
 
         public static ApplicationDbContext Create()

@@ -205,6 +205,18 @@
     <Compile Include="Migrations\202207200132350_service.designer.cs">
       <DependentUpon>202207200132350_service.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207201748052_appointment.cs" />
+    <Compile Include="Migrations\202207201748052_appointment.designer.cs">
+      <DependentUpon>202207201748052_appointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207201757210_appointment1.cs" />
+    <Compile Include="Migrations\202207201757210_appointment1.designer.cs">
+      <DependentUpon>202207201757210_appointment1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207201821383_appointmentchanges.cs" />
+    <Compile Include="Migrations\202207201821383_appointmentchanges.designer.cs">
+      <DependentUpon>202207201821383_appointmentchanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -313,6 +325,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207200132350_service.resx">
       <DependentUpon>202207200132350_service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207201748052_appointment.resx">
+      <DependentUpon>202207201748052_appointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207201757210_appointment1.resx">
+      <DependentUpon>202207201757210_appointment1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207201821383_appointmentchanges.resx">
+      <DependentUpon>202207201821383_appointmentchanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
