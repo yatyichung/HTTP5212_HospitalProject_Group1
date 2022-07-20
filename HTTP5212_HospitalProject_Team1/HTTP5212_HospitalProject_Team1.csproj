@@ -197,9 +197,13 @@
     <Compile Include="Migrations\202207182023528_room.designer.cs">
       <DependentUpon>202207182023528_room.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207192318387_Empoyees.cs" />
-    <Compile Include="Migrations\202207192318387_Empoyees.designer.cs">
-      <DependentUpon>202207192318387_Empoyees.cs</DependentUpon>
+    <Compile Include="Migrations\202207200122163_department.cs" />
+    <Compile Include="Migrations\202207200122163_department.designer.cs">
+      <DependentUpon>202207200122163_department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207200132350_service.cs" />
+    <Compile Include="Migrations\202207200132350_service.designer.cs">
+      <DependentUpon>202207200132350_service.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -210,7 +214,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\PaySlip.cs" />
-    <Compile Include="Models\Prescription.cs" />
+    <Compile Include="Models\Perscription.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Shift.cs" />
@@ -277,7 +281,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Employee\" />
-    <Folder Include="Views\prescription\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -305,8 +308,11 @@
     <EmbeddedResource Include="Migrations\202207182023528_room.resx">
       <DependentUpon>202207182023528_room.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207192318387_Empoyees.resx">
-      <DependentUpon>202207192318387_Empoyees.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207200122163_department.resx">
+      <DependentUpon>202207200122163_department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207200132350_service.resx">
+      <DependentUpon>202207200132350_service.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
