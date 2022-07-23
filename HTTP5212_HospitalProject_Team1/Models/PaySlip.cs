@@ -14,14 +14,15 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
         public int PaySlipHoursWorked { get; set; }
 
-        public int PaySlipSinNum { get; set; }  
+        public int PaySlipSinNum { get; set; }
 
         public int PaySlipHourlyWage { get; set; }
 
-        public DateTime PaySlipPaymentDate{ get; set; }
+        public DateTime PaySlipPaymentDate { get; set; }
 
         //each payslip belong to one employee
         [ForeignKey("Employee")]
         public int EmployeeId { get; set; }
+        public virtual Employee Employee { get; set; }
 }
 }
