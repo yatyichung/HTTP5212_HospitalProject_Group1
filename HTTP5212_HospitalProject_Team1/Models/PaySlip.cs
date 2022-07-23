@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HTTP5212_HospitalProject_Team1.Models
 {
@@ -19,8 +20,8 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
         public DateTime PaySlipPaymentDate{ get; set; }
 
-        /*
-         TODO: employee
-         */
+        //each payslip belong to one employee
+        [ForeignKey("Employee")]
+        public int EmployeeId { get; set; }
 }
 }
