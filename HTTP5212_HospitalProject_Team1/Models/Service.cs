@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HTTP5212_HospitalProject_Team1.Models
 {
@@ -12,5 +13,10 @@ namespace HTTP5212_HospitalProject_Team1.Models
         public int serv_id { get; set; }
         public string serv_name { get; set; }
         public string serv_desc { get; set; }
+
+        [ForeignKey("Department")]
+        public int DepartmentId { get; set; }
+        public virtual Department Department { get; set; }
+
     }
 }

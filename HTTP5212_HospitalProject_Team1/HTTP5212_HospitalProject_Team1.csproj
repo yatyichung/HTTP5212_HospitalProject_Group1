@@ -345,6 +345,34 @@
     <Compile Include="Migrations\202207232008428_payslip-employee.designer.cs">
       <DependentUpon>202207232008428_payslip-employee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207232022174_shift-employee.cs" />
+    <Compile Include="Migrations\202207232022174_shift-employee.designer.cs">
+      <DependentUpon>202207232022174_shift-employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207232034291_room-patient.cs" />
+    <Compile Include="Migrations\202207232034291_room-patient.designer.cs">
+      <DependentUpon>202207232034291_room-patient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207232038494_perscription-employee.cs" />
+    <Compile Include="Migrations\202207232038494_perscription-employee.designer.cs">
+      <DependentUpon>202207232038494_perscription-employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207232040250_perscription-patient.cs" />
+    <Compile Include="Migrations\202207232040250_perscription-patient.designer.cs">
+      <DependentUpon>202207232040250_perscription-patient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207232044451_appointment-employee.cs" />
+    <Compile Include="Migrations\202207232044451_appointment-employee.designer.cs">
+      <DependentUpon>202207232044451_appointment-employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207232046234_appointment-patient.cs" />
+    <Compile Include="Migrations\202207232046234_appointment-patient.designer.cs">
+      <DependentUpon>202207232046234_appointment-patient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207232053486_service-department.cs" />
+    <Compile Include="Migrations\202207232053486_service-department.designer.cs">
+      <DependentUpon>202207232053486_service-department.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -541,6 +569,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207232008428_payslip-employee.resx">
       <DependentUpon>202207232008428_payslip-employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207232022174_shift-employee.resx">
+      <DependentUpon>202207232022174_shift-employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207232034291_room-patient.resx">
+      <DependentUpon>202207232034291_room-patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207232038494_perscription-employee.resx">
+      <DependentUpon>202207232038494_perscription-employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207232040250_perscription-patient.resx">
+      <DependentUpon>202207232040250_perscription-patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207232044451_appointment-employee.resx">
+      <DependentUpon>202207232044451_appointment-employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207232046234_appointment-patient.resx">
+      <DependentUpon>202207232046234_appointment-patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207232053486_service-department.resx">
+      <DependentUpon>202207232053486_service-department.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

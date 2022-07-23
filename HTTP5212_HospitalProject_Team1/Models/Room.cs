@@ -18,5 +18,9 @@ namespace HTTP5212_HospitalProject_Team1.Models
         public int RoomNumber { get; set; }
 
         public bool Availability { get; set; }
+
+        [ForeignKey("Patient")]
+        public int PatientId { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }
