@@ -30,7 +30,7 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
         //each shift belong to one employee
         [ForeignKey("Employee")]
-        public int EmployeeId { get; set; }
+        public int EmployeeID { get; set; }
         public virtual Employee Employee { get; set; }
 
     }
@@ -54,6 +54,9 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
         public Boolean ShiftSat { get; set; }
 
+        public int EmployeeID { get; set; }
+
+        public string EmployeeFirstName { get; set; }
         public string EmployeeLastName { get; set; }
 
 

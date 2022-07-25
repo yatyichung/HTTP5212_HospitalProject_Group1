@@ -377,6 +377,10 @@
     <Compile Include="Migrations\202207232053486_service-department.designer.cs">
       <DependentUpon>202207232053486_service-department.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207252134572_pend.cs" />
+    <Compile Include="Migrations\202207252134572_pend.designer.cs">
+      <DependentUpon>202207252134572_pend.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -419,6 +423,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="jsondata\shift.json" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -595,6 +600,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207232053486_service-department.resx">
       <DependentUpon>202207232053486_service-department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207252134572_pend.resx">
+      <DependentUpon>202207252134572_pend.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

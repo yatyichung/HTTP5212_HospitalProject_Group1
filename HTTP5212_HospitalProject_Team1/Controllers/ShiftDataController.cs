@@ -34,6 +34,8 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 ShiftThurs = s.ShiftThurs,
                 ShiftFri = s.ShiftFri,
                 ShiftSat = s.ShiftSat,
+                EmployeeID = s.Employee.EmployeeID,
+                EmployeeFirstName = s.Employee.EmployeeFirstName,
                 EmployeeLastName = s.Employee.EmployeeLastName
             })); 
 
@@ -46,12 +48,28 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         public IHttpActionResult FindShift(int id)
         {
             Shift shift = db.Shifts.Find(id);
+            ShiftDto ShiftDto = new ShiftDto()
+            {
+                ShiftID = shift.ShiftID,
+                ShiftTime = shift.ShiftTime,
+                ShiftSun = shift.ShiftSun,
+                ShiftMon = shift.ShiftMon,
+                ShiftTues = shift.ShiftTues,
+                ShiftWed = shift.ShiftWed,
+                ShiftThurs = shift.ShiftThurs,
+                ShiftFri = shift.ShiftFri,
+                ShiftSat = shift.ShiftSat,
+                EmployeeID = shift.Employee.EmployeeID,
+                EmployeeFirstName = shift.Employee.EmployeeFirstName,
+                EmployeeLastName = shift.Employee.EmployeeLastName
+            };
+
             if (shift == null)
             {
                 return NotFound();
             }
 
-            return Ok(shift);
+            return Ok(ShiftDto);
         }
 
         // POST: api/ShiftData/UpdateShift/5
@@ -120,7 +138,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             db.Shifts.Remove(shift);
             db.SaveChanges();
 
-            return Ok(shift);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
