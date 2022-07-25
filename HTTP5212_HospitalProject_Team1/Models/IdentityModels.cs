@@ -42,5 +42,9 @@ namespace HTTP5212_HospitalProject_Team1.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<HTTP5212_HospitalProject_Team1.Models.Patient> Patients { get; set; }
+
+        public System.Data.Entity.DbSet<HTTP5212_HospitalProject_Team1.Models.Employee> Employees { get; set; }
     }
 }
