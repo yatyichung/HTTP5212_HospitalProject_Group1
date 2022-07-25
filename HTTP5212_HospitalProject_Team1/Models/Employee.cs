@@ -27,8 +27,8 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
 
         //multiple employee can be responsible for the same patient (require Patient as foreign key)
-      //[ForeignKey("Patient")]
+        //[ForeignKey("Patient")]
         //public int PatientId { get; set; }
-           //public virtual Patient Patient { get; set; }
+        //public virtual Patient Patient { get; set; }
     }
 }

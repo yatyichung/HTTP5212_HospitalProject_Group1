@@ -23,18 +23,19 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             List<Shift> Shifts = db.Shifts.ToList();
             List<ShiftDto> ShiftDtos = new List<ShiftDto>();
 
-            Shifts.ForEach(s => ShiftDtos.Add(new ShiftDto()
+            Shifts.ForEach(a => ShiftDtos.Add(new ShiftDto()
             {
-                ShiftID = s.ShiftID,
-                ShiftTime = s.ShiftTime,
-                ShiftSun = s.ShiftSun,
-                ShiftMon = s.ShiftMon,
-                ShiftTues   = s.ShiftTues,
-                ShiftWed    = s.ShiftWed, 
-                ShiftThurs = s.ShiftThurs,
-                ShiftFri = s.ShiftFri,
-                ShiftSat = s.ShiftSat,
-                EmployeeLastName = s.Employee.EmployeeLastName
+                ShiftID = a.ShiftID,
+                ShiftTime = a.ShiftTime,
+                ShiftSun = a.ShiftSun,
+                ShiftMon = a.ShiftMon,
+                ShiftTues   = a.ShiftTues,
+                ShiftWed    = a.ShiftWed, 
+                ShiftThurs = a.ShiftThurs,
+                ShiftFri = a.ShiftFri,
+                ShiftSat = a.ShiftSat,
+                EmployeeID = a.Employee.EmployeeID,
+                EmployeeLastName = a.Employee.EmployeeLastName
             })); 
 
             return ShiftDtos;
