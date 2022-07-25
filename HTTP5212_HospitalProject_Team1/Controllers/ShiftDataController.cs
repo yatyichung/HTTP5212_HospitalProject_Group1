@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using HTTP5212_HospitalProject_Team1.Models;
+using System.Diagnostics;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
@@ -77,13 +78,19 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         [HttpPost]
         public IHttpActionResult UpdateShift(int id, Shift shift)
         {
+            Debug.WriteLine("I have reached the update shift method!");
+
             if (!ModelState.IsValid)
             {
+                Debug.WriteLine("Model state is invalid!");
                 return BadRequest(ModelState);
             }
 
             if (id != shift.ShiftID)
             {
+                Debug.WriteLine("ID mismatch");
+                Debug.WriteLine("GET parameter "+id);
+                Debug.WriteLine("POST parameter " + shift.ShiftID);
                 return BadRequest();
             }
 
@@ -97,6 +104,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             {
                 if (!ShiftExists(id))
                 {
+                    Debug.WriteLine("Shift not found");
                     return NotFound();
                 }
                 else
@@ -104,7 +112,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                     throw;
                 }
             }
-
+            Debug.WriteLine("None of the conditions triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
 
