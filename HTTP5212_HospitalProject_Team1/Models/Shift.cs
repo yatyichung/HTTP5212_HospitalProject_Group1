@@ -56,7 +56,8 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
         public int EmployeeID { get; set; }
 
-       public string EmployeeLastName { get; set; }
+        public string EmployeeFirstName { get; set; }
+        public string EmployeeLastName { get; set; }
 
 
     }
