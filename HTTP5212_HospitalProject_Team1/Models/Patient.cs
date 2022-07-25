@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HTTP5212_HospitalProject_Team1.Models
 {
@@ -24,5 +25,7 @@ namespace HTTP5212_HospitalProject_Team1.Models
         //one patient can have multiple appointment (appointment.cs have patient as foreign key)
         //one patient can have multiple perscription (perscription.cs have patient as foreign key)
         //one patient can have one room (foreign key is already made in room.cs)
+
+
     }
 }

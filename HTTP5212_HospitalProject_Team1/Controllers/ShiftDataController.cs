@@ -16,15 +16,34 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/Shifts
-        public IQueryable<Shift> GetShifts()
+        // GET: api/ShiftData/ListShifts
+        [HttpGet]
+        public IEnumerable<ShiftDto> ListShifts()
         {
-            return db.Shifts;
+            List<Shift> Shifts = db.Shifts.ToList();
+            List<ShiftDto> ShiftDtos = new List<ShiftDto>();
+
+            Shifts.ForEach(s => ShiftDtos.Add(new ShiftDto()
+            {
+                ShiftID = s.ShiftID,
+                ShiftTime = s.ShiftTime,
+                ShiftSun = s.ShiftSun,
+                ShiftMon = s.ShiftMon,
+                ShiftTues   = s.ShiftTues,
+                ShiftWed    = s.ShiftWed, 
+                ShiftThurs = s.ShiftThurs,
+                ShiftFri = s.ShiftFri,
+                ShiftSat = s.ShiftSat,
+                EmployeeLastName = s.Employee.EmployeeLastName
+            })); 
+
+            return ShiftDtos;
         }
 
-        // GET: api/Shifts/5
+        // GET: api/ShiftData/FindShift/5
         [ResponseType(typeof(Shift))]
-        public IHttpActionResult GetShift(int id)
+        [HttpGet]
+        public IHttpActionResult FindShift(int id)
         {
             Shift shift = db.Shifts.Find(id);
             if (shift == null)
@@ -35,9 +54,10 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return Ok(shift);
         }
 
-        // PUT: api/Shifts/5
+        // POST: api/ShiftData/UpdateShift/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutShift(int id, Shift shift)
+        [HttpPost]
+        public IHttpActionResult UpdateShift(int id, Shift shift)
         {
             if (!ModelState.IsValid)
             {
@@ -70,9 +90,10 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Shifts
+        // POST: api/ShiftData/AddShift
         [ResponseType(typeof(Shift))]
-        public IHttpActionResult PostShift(Shift shift)
+        [HttpPost]
+        public IHttpActionResult AddShift(Shift shift)
         {
             if (!ModelState.IsValid)
             {
@@ -85,8 +106,9 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return CreatedAtRoute("DefaultApi", new { id = shift.ShiftID }, shift);
         }
 
-        // DELETE: api/Shifts/5
+        // POST: api/ShiftData/DeleteShift/5
         [ResponseType(typeof(Shift))]
+        [HttpPost]
         public IHttpActionResult DeleteShift(int id)
         {
             Shift shift = db.Shifts.Find(id);
