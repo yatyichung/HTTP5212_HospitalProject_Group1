@@ -63,9 +63,10 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return View(selectedshift);
         }
 
-        // GET: Shift/Create
-        public ActionResult Create()
+        // GET: Shift/New
+        public ActionResult New()
         {
+            //api/ShiftData/AddShift
             return View();
         }
 
