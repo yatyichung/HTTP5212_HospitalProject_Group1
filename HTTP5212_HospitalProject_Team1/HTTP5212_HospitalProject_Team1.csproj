@@ -312,6 +312,7 @@
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaySlipDataController.cs" />
     <Compile Include="Controllers\PerscriptionDataController.cs" />
     <Compile Include="Controllers\ShiftDataController.cs" />
     <Compile Include="Global.asax.cs">
