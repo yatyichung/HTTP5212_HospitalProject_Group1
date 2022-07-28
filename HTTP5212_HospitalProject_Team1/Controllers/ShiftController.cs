@@ -20,7 +20,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         static ShiftController()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:44397/api/ShiftData/");
+            client.BaseAddress = new Uri("https://localhost:44397/api/");
         }
 
 
@@ -33,7 +33,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             //curl https://localhost:44397/api/ShiftData/ListShifts
 
 
-            string url = "ListShifts";
+            string url = "ShiftData/ListShifts";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             //Debug.WriteLine("The response code is ");
@@ -52,7 +52,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             //retrieve one shift from shiftdatacontroller
             //curl https://localhost:44397/api/ShiftData/FindShift/{id}
 
-            string url = "FindShift/"+id;
+            string url = "ShiftData/FindShift/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             //Debug.WriteLine("The response code is ");
@@ -74,7 +74,12 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         public ActionResult New()
         {
             //api/ShiftData/AddShift
-            return View();
+            string url = "employeedata/listemployees";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<EmployeeDto> EmployeesOptions = response.Content.ReadAsAsync<IEnumerable<EmployeeDto>>().Result;
+
+
+            return View(EmployeesOptions);
         }
 
         // POST: Shift/Create
@@ -86,7 +91,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             //OBJECTIVE: add a new shift into the sysyem using the API
 
             //curl -H "Content-Type:application/json" -d @shift.json https://localhost:44397/api/ShiftData/addshift
-            string url = "addshift";
+            string url = "ShiftData/addshift";
 
           
             string jsonpayload = jss.Serialize(shift);
@@ -123,7 +128,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             ViewModel.SelectedShift = SelectedShift;
 
        
-            url = "employeedata/listemployee/";
+            url = "employeedata/listemployees/";
             response = client.GetAsync(url).Result;
             IEnumerable<EmployeeDto> EmployeesOptions = response.Content.ReadAsAsync<IEnumerable<EmployeeDto>>().Result;
 
@@ -159,7 +164,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         // GET: Shift/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "findshift/" + id;
+            string url = "ShiftData/findshift/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             ShiftDto selectedshift = response.Content.ReadAsAsync<ShiftDto>().Result;
             return View(selectedshift);
@@ -169,7 +174,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "deletepassenger/" +id;
+            string url = "ShiftData/deletepassenger/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
