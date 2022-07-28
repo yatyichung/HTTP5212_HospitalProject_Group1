@@ -1,7 +1,18 @@
-﻿
+﻿@model  HTTP5212_HospitalProject_Team1.Models.RoomDto
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
+<div class="option-list">
+    <a href="/Room/List">Go back to list</a>
+</div>
+
+<h2>Room Number:@Model.RoomNumber</h2>
+<div>Availability:@Model.Availability</div>
+<div>Patient Name: (@Model.PatientID) @Model.FirstName @Model.LastName</div>
+
+<div class="Room-delete">
+    <a href="/Room/Edit/@Model.RoomId">Update</a>
+    <a href="/Room/DeleteConfirm/@Model.RoomId">Delete</a>
+</div>

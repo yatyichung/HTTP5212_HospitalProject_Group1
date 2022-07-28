@@ -12,13 +12,13 @@ namespace HTTP5212_HospitalProject_Team1.Models
         [Key]
         public int PatientID { get; set; }
 
-        public string PatientFirstName { get; set; }
+        public string FirstName { get; set; }
 
-        public string PatientLastName { get; set; }
+        public string LastName { get; set; }
 
-        public string PatientAddress { get; set; }
+        public string Address { get; set; }
 
-        public int PatientRoomNumber { get; set; }
+        public string Phone { get; set; }
 
         //---NO NEED FOREIGN KEY
         //one patient can have multiple responsile employee (employee.cs have patient as foreign key)
@@ -28,4 +28,21 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
 
     }
+
+    public class PatientDto
+    {
+        [Key]
+        public int PatientID { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Address { get; set; }
+
+        public string Phone { get; set; }
+
+
+    }
+
 }

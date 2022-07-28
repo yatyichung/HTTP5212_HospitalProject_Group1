@@ -1,7 +1,30 @@
-﻿
+﻿@model IEnumerable<HTTP5212_HospitalProject_Team1.Models.RoomDto>
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = "Create";
 }
+<div class="back-list">
+    <a href="/Room/List">Go Back To Room List</a>
+    
+</div>
 
-<h2>New</h2>
-
+<h2>Create Room</h2>
+<form action="/Room/Create" method="POST">
+    <div>
+        <label>Room Type:</label> <input type="text" name="RoomType" />
+    </div>
+    <div>
+        <label>Room Number:</label> <input type="number" name="RoomNumber" />
+    </div>
+    <div>
+        <label>Availability:</label> <input value="true" type="checkbox" name="Availability" />
+        <!-- <span style="font-weight:bold">Availability: </span>
+        <input type="radio" name="Availability" id="yes" value="true" /><label for="yes">Yes</label>
+        <input type="radio" name="Availability" id="no" value="false" /><label for="no">No</label>-->
+    </div>
+    <div>
+        <label>Patient:</label> <input type="number" name="PatientID" />
+    </div>
+    <div>
+        <input class="btn btn-primary add-button" type="submit" value="Add Room" />
+    </div>
+</form>
