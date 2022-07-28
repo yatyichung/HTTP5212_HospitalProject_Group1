@@ -128,9 +128,9 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             ViewModel.SelectedShift = SelectedShift;
 
        
-            url = "employeedata/listemployees/";
+            url = "employeedata/listemployees";
             response = client.GetAsync(url).Result;
-            IEnumerable<EmployeeDto> EmployeesOptions = response.Content.ReadAsAsync<IEnumerable<EmployeeDto>>().Result;
+             IEnumerable<EmployeeDto> EmployeesOptions = response.Content.ReadAsAsync<IEnumerable<EmployeeDto>>().Result;
 
             ViewModel.EmployeesOptions = EmployeesOptions;
             return View(ViewModel);
@@ -143,7 +143,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             //objective: update the shift info in the system
       
             //curl -H "Content-Type:application/json" -d @shift.json https://localhost:44345/api/ShiftData/updateshift
-            string url = "ShiftData/updateshift/" + id;
+            string url = "shiftdata/updateshift/" + id;
             string jsonpayload = jss.Serialize(shift);
 
             HttpContent content = new StringContent(jsonpayload);
@@ -164,7 +164,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         // GET: Shift/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "ShiftData/findshift/" + id;
+            string url = "shiftdata/findshift/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             ShiftDto selectedshift = response.Content.ReadAsAsync<ShiftDto>().Result;
             return View(selectedshift);
@@ -174,7 +174,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "ShiftData/deletepassenger/" + id;
+            string url = "shiftdata/deleteshift/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
