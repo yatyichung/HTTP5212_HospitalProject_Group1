@@ -3,5 +3,39 @@
     ViewBag.Title = "New";
 }
 
-<h2>New</h2>
+<h2>Create Shift</h2>
+<form action="/Shift/Create" method="POST">
+    <div>
+        <label>Employee ID:</label><input type="number" name="EmployeeID"/>
+    </div>
+    <div>
+        <label>Shift time:</label><input type="text" name="ShiftTime" placeholder="Day/Night" />
+    </div>
+    <div>
+        <label>Sunday:</label><input type="text" name="ShiftSun" placeholder="True/False" />
+    </div>
+    <div>
+        <label>Monday:</label><input type="text" name="ShiftMon" placeholder="True/False" />
+    </div>
+    <div>
+        <label>Tuesday:</label><input type="text" name="ShiftTues" placeholder="True/False" />
+    </div>
+    <div>
+        <label>Wedesday:</label><input type="text" name="ShiftWed" placeholder="True/False" />
+
+    </div>
+    <div>
+        <label>Thursday:</label><input type="text" name="ShiftThurs" placeholder="True/False" />
+    </div>
+    <div>
+        <label>Friday:</label><input type="text" name="ShiftFri" placeholder="True/False" />
+    </div>
+    <div>
+        <label>Saturday:</label><input type="text" name="ShiftSat" placeholder="True/False" />
+    </div>
+    <div>
+        <input type="submit" value="Add Shift" />
+    </div>
+</form>
+
 

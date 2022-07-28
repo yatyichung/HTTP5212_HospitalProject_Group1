@@ -1,7 +1,15 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.PaySlipDto
+
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<a href="/PaySlip/List" type="button" class="btn btn-warning">Back to list</a>
+<!--<a href="/PaySlip/DeleteConfirm/@Model.PaySlipID" type="button" class="btn btn-danger ">Delete</a>-->
 
+
+<h2>Name: @Model.EmployeeFirstName @Model.EmployeeLastName</h2>
+<div>Sin number: @Model.PaySlipSinNum</div>
+<div>Hourly wage: @Model.PaySlipHourlyWage</div>
+<div>Hours worked: @Model.PaySlipHoursWorked</div>
+<div>Payment date: @Model.PaySlipPaymentDate</div>

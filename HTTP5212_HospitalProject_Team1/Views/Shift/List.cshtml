@@ -1,7 +1,21 @@
-﻿
+﻿@model IEnumerable<HTTP5212_HospitalProject_Team1.Models.ShiftDto>
+
+
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h2>List Shifts</h2>
+@foreach (var shift in Model)
+{
+    <h3><a href="/Shift/Details/@shift.ShiftID">@shift.EmployeeFirstName @shift.EmployeeLastName</a></h3>
+    <h4>Shift time: @shift.ShiftTime</h4>
+    <div>Sunday: @shift.ShiftSun</div>
+    <div>Monday: @shift.ShiftMon</div>
+    <div>Tuesday: @shift.ShiftTues</div>
+    <div>Wednesday: @shift.ShiftWed</div>
+    <div>Thursday: @shift.ShiftThurs</div>
+    <div>Friday: @shift.ShiftFri</div>
+    <div>Saturday: @shift.ShiftSat</div>
+}
 

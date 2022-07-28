@@ -1,7 +1,20 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.ShiftDto
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<a href="/Shift/List" type="button" class="btn btn-warning">Back to list</a>
+<a href="/Shift/DeleteConfirm/@Model.ShiftID" type="button" class="btn btn-danger ">Delete</a>
+<a type="button" class="btn btn-info right" href="/Shift/Edit/@Model.ShiftID">Edit</a>
 
+
+
+<h2>Name: @Model.EmployeeFirstName @Model.EmployeeLastName</h2>
+<h3>Shift time: @Model.ShiftTime</h3>
+<div>Sunday: @Model.ShiftSun</div>
+<div>Monday: @Model.ShiftMon</div>
+<div>Tuesday: @Model.ShiftTues</div>
+<div>Wednesday: @Model.ShiftWed</div>
+<div>Thursday: @Model.ShiftThurs</div>
+<div>Friday: @Model.ShiftFri</div>
+<div>Saturday: @Model.ShiftSat</div>

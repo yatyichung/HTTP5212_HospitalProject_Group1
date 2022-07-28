@@ -19,6 +19,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // GET: api/ShiftData/ListShifts
         [HttpGet]
+        [ResponseType(typeof(ShiftDto))]
         public IEnumerable<ShiftDto> ListShifts()
         {
             List<Shift> Shifts = db.Shifts.ToList();
@@ -88,9 +89,9 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             if (id != shift.ShiftID)
             {
-                Debug.WriteLine("ID mismatch");
-                Debug.WriteLine("GET parameter "+id);
-                Debug.WriteLine("POST parameter " + shift.ShiftID);
+                //Debug.WriteLine("ID mismatch");
+                //Debug.WriteLine("GET parameter "+id);
+                //Debug.WriteLine("POST parameter " + shift.ShiftID);
                 return BadRequest();
             }
 
@@ -112,7 +113,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                     throw;
                 }
             }
-            Debug.WriteLine("None of the conditions triggered");
+            //Debug.WriteLine("None of the conditions triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
 

@@ -1,7 +1,16 @@
-﻿
+﻿@model IEnumerable<HTTP5212_HospitalProject_Team1.Models.RoomDto>
 @{
     ViewBag.Title = "List";
 }
 
 <h2>List</h2>
+<div class="back-list">
+    <a href="/Room/New">Add Room</a>
+</div>
 
+@foreach (var room in Model)
+{
+    <a href="/Room/Details/@room.RoomId"><h3>Room @room.RoomNumber</h3></a>
+    <div>Room Type: @room.RoomType</div>
+    
+}
