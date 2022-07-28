@@ -1,7 +1,16 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.PaySlipDto
 @{
     ViewBag.Title = "DeleteConfirm";
 }
 
-<h2>DeleteConfirm</h2>
+<h2>Are you sure you want to delete this payslip for @Model.EmployeeFirstName @Model.EmployeeLastName</h2>
+<a href="/payslip/list">Cancel</a>
 
+<div>Sin number: @Model.PaySlipSinNum</div>
+<div>Hourly wage: @Model.PaySlipHourlyWage</div>
+<div>Hours worked: @Model.PaySlipHoursWorked</div>
+<div>Payment date: @Model.PaySlipPaymentDate</div>
+
+<form action="/PaySlip/Delete/@Model.PaySlipID" method="POST">
+    <input type="submit" value="Confirm Delete" />
+</form>

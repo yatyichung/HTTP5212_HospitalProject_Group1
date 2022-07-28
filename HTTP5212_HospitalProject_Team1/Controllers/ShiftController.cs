@@ -74,12 +74,13 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         public ActionResult New()
         {
             //api/ShiftData/AddShift
-            string url = "employeedata/listemployees";
-            HttpResponseMessage response = client.GetAsync(url).Result;
-            IEnumerable<EmployeeDto> EmployeesOptions = response.Content.ReadAsAsync<IEnumerable<EmployeeDto>>().Result;
+            //string url = "employeedata/listemployees";
+            //HttpResponseMessage response = client.GetAsync(url).Result;
+            //IEnumerable<EmployeeDto> EmployeesOptions = response.Content.ReadAsAsync<IEnumerable<EmployeeDto>>().Result;
 
 
-            return View(EmployeesOptions);
+            //return View(EmployeesOptions);
+            return View();
         }
 
         // POST: Shift/Create

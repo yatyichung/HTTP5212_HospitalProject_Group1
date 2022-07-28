@@ -3,5 +3,25 @@
     ViewBag.Title = "New";
 }
 
-<h2>New</h2>
+<h2>Create Payslip</h2>
+<form action="/PaySlip/Create" method="POST">
+    <div>
+        <label>Employee ID:</label><input type="number" name="EmployeeID" />
+    </div>
+    <div>
+        <label>Sin Number:</label><input type="number" name="PaySlipSinNum" placeholder="ex. 927483719" />
+    </div>
+    <div>
+        <label>Hourly wage:</label><input type="number" name="PaySlipHourlyWage" placeholder="ex. 35" />
+    </div>
+    <div>
+        <label>Hours worked:</label><input type="number" name="PaySlipHoursWorked" placeholder="ex. 79" />
+    </div>
+    <div>
+        <label>Payment date:</label><input type="datetime-local" name="PaySlipPaymentDate" />
+    </div>
 
+    <div>
+        <input type="submit" value="Add Payslip" />
+    </div>
+</form>

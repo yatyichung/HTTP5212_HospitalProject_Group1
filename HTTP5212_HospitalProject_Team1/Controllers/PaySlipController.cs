@@ -19,7 +19,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         static PaySlipController()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:44397/api/PaySlipData/");
+            client.BaseAddress = new Uri("https://localhost:44397/api/");
         }
 
 
@@ -30,7 +30,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             //curl https://localhost:44397/api/PaySlipData/ListPaySlips
 
 
-            string url = "ListPaySlips";
+            string url = "PaySlipData/ListPaySlips";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             //Debug.WriteLine("The response code is ");
@@ -49,7 +49,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             //retrieve one payslip from payslipdatacontroller
             //curl https://localhost:44397/api/PaySlipData/FindPaySlip/{id}
 
-            string url = "FindPaySlip/" + id;
+            string url = "PaySlipData/FindPaySlip/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             //Debug.WriteLine("The response code is ");
@@ -62,26 +62,53 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return View(selectedpayslip);
         }
 
+        public ActionResult Error()
+        {
+            return View();
+        }
+
         // GET: PaySlip/New
         public ActionResult New()
         {
+            //api/payslipdata/addpayslip
+            //string url = "employeedata/listemployees";
+            //HttpResponseMessage response = client.GetAsync(url).Result;
+            //IEnumerable<EmployeeDto> EmployeesOptions = response.Content.ReadAsAsync<IEnumerable<EmployeeDto>>().Result;
+
+
+            //return View(EmployeesOptions);
             return View();
         }
 
         // POST: PaySlip/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(PaySlip payslip)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            Debug.WriteLine("The json payload is: ");
+            //Debug.WriteLine(payslip.PaySlipID);
+            //OBJECTIVE: add a new payslip into the sysyem using the API
 
-                return RedirectToAction("Index");
-            }
-            catch
+            //curl -H "Content-Type:application/json" -d @payslip.json https://localhost:44397/api/payslipdata/addpayslip
+            string url = "PaySlipData/addpayslip";
+
+
+            string jsonpayload = jss.Serialize(payslip);
+
+            Debug.WriteLine(jsonpayload);
+
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
             {
-                return View();
+                return RedirectToAction("List");
             }
+            else
+            {
+                return Redirect("Error");
+            }
+
         }
 
         // GET: PaySlip/Edit/5
@@ -109,22 +136,29 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         // GET: PaySlip/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
-            return View();
+            string url = "PaySlipData/findpayslip/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            PaySlipDto selectedpayslip = response.Content.ReadAsAsync<PaySlipDto>().Result;
+            return View(selectedpayslip);
         }
 
         // POST: PaySlip/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            string url = "PaySlipData/deletepayslip/" + id;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (response.IsSuccessStatusCode)
             {
-                return View();
+                return RedirectToAction("List");
+
+            }
+            else
+            {
+                return RedirectToAction("Error");
             }
         }
     }
