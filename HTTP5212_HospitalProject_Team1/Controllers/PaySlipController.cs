@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Diagnostics;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
+using HTTP5212_HospitalProject_Team1.Models.ViewModels;
+
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
@@ -114,22 +116,44 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         // GET: PaySlip/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            UpdatePaySlip ViewModel = new UpdatePaySlip();
+
+
+            string url = "PaySlipData/findpayslip/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            PaySlipDto SelectedPaySlip = response.Content.ReadAsAsync<PaySlipDto>().Result;
+            ViewModel.SelectedPaySlip = SelectedPaySlip;
+
+
+            url = "employeedata/listemployees";
+            response = client.GetAsync(url).Result;
+            IEnumerable<EmployeeDto> EmployeesOptions = response.Content.ReadAsAsync<IEnumerable<EmployeeDto>>().Result;
+
+            ViewModel.EmployeesOptions = EmployeesOptions;
+            return View(ViewModel);
         }
 
         // POST: PaySlip/Update/5
         [HttpPost]
-        public ActionResult Update(int id, FormCollection collection)
+        public ActionResult Update(int id, PaySlip payslip)
         {
-            try
-            {
-                // TODO: Add update logic here
+            //objective: update the payslip info in the system
 
-                return RedirectToAction("Index");
-            }
-            catch
+            //curl -H "Content-Type:application/json" -d @payslip.json https://localhost:44345/api/PaySlipData/updatepayslip
+            string url = "PaySlipData/updatepayslip" + id;
+            string jsonpayload = jss.Serialize(payslip);
+
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            Debug.WriteLine(content);
+            if (response.IsSuccessStatusCode)
             {
-                return View();
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
             }
         }
 
