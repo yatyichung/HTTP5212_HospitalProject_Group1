@@ -311,6 +311,11 @@
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaySlipDataController.cs" />
+    <Compile Include="Controllers\PerscriptionDataController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\RoomDataController.cs" />
+    <Compile Include="Controllers\ShiftController.cs" />
     <Compile Include="Controllers\ShiftDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -375,6 +380,10 @@
     <Compile Include="Migrations\202207232053486_service-department.designer.cs">
       <DependentUpon>202207232053486_service-department.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207252134572_pend.cs" />
+    <Compile Include="Migrations\202207252134572_pend.designer.cs">
+      <DependentUpon>202207252134572_pend.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -417,6 +426,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="jsondata\shift.json" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -503,7 +513,6 @@
     <Content Include="Views\Room\Edit.cshtml" />
     <Content Include="Views\Room\Error.cshtml" />
     <Content Include="Views\Room\List.cshtml" />
-    <Content Include="Views\Room\New.cshtml" />
     <Content Include="Views\Service\DeleteConfirm.cshtml" />
     <Content Include="Views\Service\Details.cshtml" />
     <Content Include="Views\Service\Edit.cshtml" />
@@ -516,6 +525,7 @@
     <Content Include="Views\Shift\Error.cshtml" />
     <Content Include="Views\Shift\List.cshtml" />
     <Content Include="Views\Shift\New.cshtml" />
+    <Content Include="Views\Room\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -593,6 +603,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207232053486_service-department.resx">
       <DependentUpon>202207232053486_service-department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207252134572_pend.resx">
+      <DependentUpon>202207252134572_pend.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
