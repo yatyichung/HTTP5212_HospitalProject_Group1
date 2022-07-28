@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Diagnostics;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
+using HTTP5212_HospitalProject_Team1.Models.ViewModels;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
@@ -112,33 +113,36 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         // POST: Shift/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
-            //UpdateShift ViewModel = new UpdateShift();
-            //string url = "shiftdata/findshift/" + id;
-            //HttpResponseMessage response = client.GetAsync(url).Result;
-            //ShiftDto SelectedShift = response.Content.ReadAsAsync<ShiftDto>().Result;
-            //ViewModel.SelectedShift = SelectedShift;
 
-            //url = "employee/listemployees";
-            //response = client.GetAsync(url).Result;
-            //IEnumerable<EmployeeDto> 
+            UpdateShift ViewModel = new UpdateShift();
+
+
+            string url = "shiftdata/findshift/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            ShiftDto SelectedShift = response.Content.ReadAsAsync<ShiftDto>().Result;
+            ViewModel.SelectedShift = SelectedShift;
+
+       
+            url = "employeedata/listemployee/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<EmployeeDto> EmployeesOptions = response.Content.ReadAsAsync<IEnumerable<EmployeeDto>>().Result;
+
+            ViewModel.EmployeesOptions = EmployeesOptions;
+            return View(ViewModel);
         }
 
         // POST: Shift/Update/5
         [HttpPost]
         public ActionResult Update(int id, Shift shift)
         {
-            //OBJECTIVE: update a  shift in the sysyem using the API
-
-            //curl -H "Content-Type:application/json" -d @shift.json https://localhost:44397/api/ShiftData/updateshift
-            string url = "updateshift/"+id;
+            //objective: update the shift info in the system
+      
+            //curl -H "Content-Type:application/json" -d @shift.json https://localhost:44345/api/ShiftData/updateshift
+            string url = "ShiftData/updateshift/" + id;
             string jsonpayload = jss.Serialize(shift);
-
-            //Debug.WriteLine(jsonpayload);
 
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
-
             HttpResponseMessage response = client.PostAsync(url, content).Result;
             Debug.WriteLine(content);
             if (response.IsSuccessStatusCode)
@@ -147,7 +151,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             }
             else
             {
-                return Redirect("Error");
+                return RedirectToAction("Error");
             }
 
         }
