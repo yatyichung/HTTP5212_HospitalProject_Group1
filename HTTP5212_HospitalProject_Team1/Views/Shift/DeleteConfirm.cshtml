@@ -1,7 +1,20 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.ShiftDto
 @{
     ViewBag.Title = "DeleteConfirm";
 }
 
-<h2>DeleteConfirm</h2>
+<h2>Are you sure you want to delete this shift for @Model.EmployeeFirstName @Model.EmployeeLastName?</h2>
+<a href="/shift/list">Cancel</a>
+<h3>Shift time: @Model.ShiftTime</h3>
+<div>Sunday: @Model.ShiftSun</div>
+<div>Monday: @Model.ShiftMon</div>
+<div>Tuesday: @Model.ShiftTues</div>
+<div>Wednesday: @Model.ShiftWed</div>
+<div>Thursday: @Model.ShiftThurs</div>
+<div>Friday: @Model.ShiftFri</div>
+<div>Saturday: @Model.ShiftSat</div>
 
+<form action="/Shift/Delete/@Model.ShiftID" method="POST">
+    <input type="submit" value="Confirm Delete" />
+
+</form>

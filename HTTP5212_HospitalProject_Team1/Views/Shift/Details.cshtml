@@ -3,7 +3,9 @@
     ViewBag.Title = "Details";
 }
 
-<a href="/Shift/List">Back to list</a>
+<a href="/Shift/List" type="button" class="btn btn-warning">Back to list</a>
+<a href="/Shift/DeleteConfirm/@Model.ShiftID" type="button" class="btn btn-danger ">Delete</a>
+
 
 <h2>Name: @Model.EmployeeFirstName @Model.EmployeeLastName</h2>
 <h3>Shift time: @Model.ShiftTime</h3>
