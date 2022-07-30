@@ -38,23 +38,8 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
         public string Address { get; set; }
 
-        public int Phone { get; set; }
-    }
-
-    public class PatientDto
-    {
-        [Key]
-        public int PatientID { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string Address { get; set; }
-
         public string Phone { get; set; }
-
-
     }
+
 
 }
