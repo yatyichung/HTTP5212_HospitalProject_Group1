@@ -1,7 +1,28 @@
 ﻿
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = "Create";
 }
 
-<h2>New</h2>
+<h2>New Employee</h2>
 
+<form action="/Employee/Create" method="POST">
+    <div>
+        <label for="EmployeeFirstName">First Name:</label>
+        <input type="text" name="EmployeeFirstName" id="EmployeeFirstName" />
+    </div>
+    <div>
+        <label for="EmployeeLastName">Last Name:</label>
+        <input type="text" name="EmployeeLastName" id="EmployeeLastName" />
+    </div>
+    <div>
+        <label for="EmployeeRole">Role:</label>
+        <input type="text" name="EmployeeRole" id="EmployeeRole" />
+    </div>
+    <div>
+        <label for="EmployeeJoinDate">Join Date:</label>
+        <input type="text" name="EmployeeJoinDate" id="EmployeeJoinDate" />
+    </div>
+    <div>
+        <input type="submit" value="Add Employee" />
+    </div>
+</form>

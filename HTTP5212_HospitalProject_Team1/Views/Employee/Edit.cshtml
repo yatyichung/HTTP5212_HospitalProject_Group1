@@ -1,7 +1,34 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.EmployeeDto
 @{
     ViewBag.Title = "Edit";
 }
+<div class="back-list">
+    <a href="/Employee/List">Go Back To Employee List</a>
+</div>
 
-<h2>Edit</h2>
+<h2>Update Employee</h2>
 
+<div class="form-wrapper">
+    <form class="form-floating mb-3" action="/Employee/Update/@Model.EmployeeID" method="POST">
+        <div class="input-wrapper">
+            <div style="display:none;">
+                <input class="form-control" id="floatingInput" type="text" name="EmployeeId" value="@Model.EmployeeID" />
+            </div>
+            <div>
+                <label for="floatingInput">Empoloyee First Name:</label> <input class="form-control" id="floatingInput" type="text" name="FirstName" value="@Model.EmployeeFirstName" />
+            </div>
+            <div>
+                <label for="floatingInput">Empoloyee Last Name:</label> <input class="form-control" id="floatingInput" type="text" name="LastName" value="@Model.EmployeeLastName" />
+            </div>
+            <div>
+                <label for="floatingInput">Empoloyee Role:</label> <input class="form-control" id="floatingInput" type="text" name="Role" value="@Model.EmployeeRole" />
+            </div>
+            <div>
+                <label for="floatingInput">Join Date:</label> <input class="form-control" id="floatingInput" type="datetime" name="Joindate" value="@Model.EmployeeJoinDate" />
+            </div>
+            <div>
+                <input class="btn btn-primary add-button" type="submit" value="Update Employee" />
+            </div>
+        </div>
+    </form>
+</div>

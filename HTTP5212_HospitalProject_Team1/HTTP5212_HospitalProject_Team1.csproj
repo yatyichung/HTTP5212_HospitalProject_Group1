@@ -310,6 +310,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppointmentDataController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeeDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaySlipDataController.cs" />
@@ -419,6 +421,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="jsondata\Employee.json" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -488,7 +491,6 @@
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Error.cshtml" />
     <Content Include="Views\Employee\List.cshtml" />
-    <Content Include="Views\Employee\New.cshtml" />
     <Content Include="Views\Patient\DeleteConfirm.cshtml" />
     <Content Include="Views\Patient\Details.cshtml" />
     <Content Include="Views\Patient\Edit.cshtml" />
@@ -525,6 +527,7 @@
     <Content Include="Views\Shift\Error.cshtml" />
     <Content Include="Views\Shift\List.cshtml" />
     <Content Include="Views\Shift\New.cshtml" />
+    <Content Include="Views\Employee\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

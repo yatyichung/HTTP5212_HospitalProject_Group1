@@ -1,7 +1,11 @@
-﻿
+﻿@model IEnumerable<HTTP5212_HospitalProject_Team1.Models.EmployeeDto>
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
-
+<h2>Employees</h2>
+<a href="/Employee/New">New Employee</a>
+@foreach (var employee in Model) { 
+    <h2><a href="/Employee/Details/@employee.EmployeeID">@employee.EmployeeFirstName @employee.EmployeeLastName</a></h2>
+    <div>Role: @employee.EmployeeRole</div>
+}
