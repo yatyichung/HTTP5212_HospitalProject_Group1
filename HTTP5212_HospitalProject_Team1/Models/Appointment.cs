@@ -24,4 +24,24 @@ namespace HTTP5212_HospitalProject_Team1.Models
         public int PatientId { get; set; }
         public virtual Patient Patient { get; set; }
     }
+    public class AppointmentDto
+    {
+        public int AppointmentId { get; set; }
+
+        public string TypeOfAppointment { get; set; }
+
+        public DateTime AppointmentTime { get; set; }
+
+
+        public int PatientID { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public int EmployeeID { get; set; }
+
+        public string EmployeeFirstName { get; set; }
+        public string EmployeeLastName { get; set; }
+    }
 }

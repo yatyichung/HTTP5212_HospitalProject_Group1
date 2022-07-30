@@ -3,5 +3,27 @@
     ViewBag.Title = "New";
 }
 
-<h2>New</h2>
+<h2>Create New Appointment</h2>
+<form action="/Perscription/Create " method="POST">
+    <div>
+        <label>Patient ID:</label><input type="number" name="PatientID" />
+
+    </div>
+    <div>
+        <label>Prescription Date:</label><input type="date" name="DateOfPrescription" />
+    </div>
+    <div>
+        <label>Prescription:</label><input type="text" name="Prescription" />
+    </div>
+    <div>
+        <label>Dosage:</label><input type="text" name="Dosage" />
+    </div>
+
+    <div>
+        <label>Employee ID:</label><input type="number" name="EmployeeID" />
+    </div>
+    <div>
+        <input type="submit" value="Add Appointment" />
+    </div>
+</form>
 

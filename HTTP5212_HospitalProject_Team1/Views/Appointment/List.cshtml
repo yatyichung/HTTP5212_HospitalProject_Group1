@@ -1,7 +1,18 @@
-﻿
+﻿@model IEnumerable<HTTP5212_HospitalProject_Team1.Models.AppointmentDto>
+
+
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h2>List Appointment</h2>
+<a href="/Appointment/New">New Appointment</a>
+@foreach (var appointment in Model)
+{
+    <h3><a href="/Appointment/Details/@appointment.AppointmentId">@appointment.FirstName @appointment.LastName</a></h3>
+    //<h3><a href="/Appointments/Details/@appointment.AppointmentId">@appointment.EmployeeFirstName @appointment.EmployeeLastName</a></h3>
+    <div>Appointmen Type: @appointment.TypeOfAppointment</div>
+    <div>Appointment Time: @appointment.AppointmentTime</div>
 
+
+}
