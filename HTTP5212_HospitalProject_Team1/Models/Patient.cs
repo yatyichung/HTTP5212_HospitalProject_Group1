@@ -28,10 +28,8 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
 
     }
-
-    public class PatientDto
+    public class PatientDTO
     {
-        [Key]
         public int PatientID { get; set; }
 
         public string FirstName { get; set; }
@@ -41,8 +39,7 @@ namespace HTTP5212_HospitalProject_Team1.Models
         public string Address { get; set; }
 
         public string Phone { get; set; }
-
-
     }
+
 
 }

@@ -1,7 +1,17 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.EmployeeDto
 @{
     ViewBag.Title = "DeleteConfirm";
 }
 
-<h2>DeleteConfirm</h2>
+<div class="confirm-container">
+    <div>
+        <h2>Are you sure you want to delete @Model.EmployeeFirstName</h2>
+    </div>
+    <div>
+        <form action="/Employee/Delete/@Model.EmployeeID" method="POST">
+            <input class="btn btn-primary del-button" type="submit" value="Confirm Delete" />
+            <a href="/Employee/List"><input class="btn btn-primary del-button" type="button" value="Cancel" /></a>
+        </form>
+    </div>
+</div>
 
