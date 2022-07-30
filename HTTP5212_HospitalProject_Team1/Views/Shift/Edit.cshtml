@@ -1,7 +1,56 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.ViewModels.UpdateShift
+
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit Shift Info</h2>
 
+<a type="button" class="btn btn-warning" href="/Shift/List">Back to shift list</a>
+<a href="/Shift/Details/@Model.SelectedShift.ShiftID" type="button" class="btn btn-info">Back to @Model.SelectedShift.EmployeeFirstName @Model.SelectedShift.EmployeeLastName</a>
+
+<form action="/Shift/Update/@Model.SelectedShift.ShiftID" method="POST" enctype="multipart/form-data">
+    <div style="display:none;">
+        @*pass through the shift ID*@
+        <input type="number" name="ShiftID" value="@Model.SelectedShift.ShiftID" />
+    </div>
+    <div>
+        <label>Shift time:</label><input type="text" value="@Model.SelectedShift.ShiftTime" name="ShiftTime" id="ShiftTime" />
+    </div>
+    <div>
+        <label>Sunday:</label><input type="text" value="@Model.SelectedShift.ShiftSun" name="ShiftSun" id="ShiftSun" />
+    </div>
+    <div>
+        <label>Monday:</label><input type="text" value="@Model.SelectedShift.ShiftMon" name="ShiftMon" id="ShiftMon" />
+    </div>
+    <div>
+        <label>Tuesday:</label><input type="text" value="@Model.SelectedShift.ShiftTues" name="ShiftTues" id="ShiftTues" />
+    </div>
+    <div>
+        <label>Wednesday:</label><input type="text" value="@Model.SelectedShift.ShiftWed" name="ShiftWed" id="ShiftWed" />
+    </div>
+    <div>
+        <label>Thursday:</label><input type="text" value="@Model.SelectedShift.ShiftThurs" name="ShiftThurs" id="ShiftThurs" />
+    </div>
+    <div>
+        <label>Friday:</label><input type="text" value="@Model.SelectedShift.ShiftFri" name="ShiftFri" id="ShiftFri" />
+    </div>
+    <div>
+        <label>Saturday:</label><input type="text" value="@Model.SelectedShift.ShiftSat" name="ShiftSat" id="ShiftSat" />
+    </div>
+    <div>
+        <label for="EmployeeID">Employee ID: </label>
+        <select name="EmployeeID" id="EmployeeID" class="form-control">
+            @foreach (var employee in Model.EmployeesOptions)
+            {
+                <option value="@employee.EmployeeID">@employee.EmployeeFirstName @employee.EmployeeLastName</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary" value="Update Shift">Submit</button>
+        <a href="/Shift/Details/@Model.SelectedShift.ShiftID" type="button" class="btn btn-danger ">Cancel</a>
+
+    </div>
+</form>

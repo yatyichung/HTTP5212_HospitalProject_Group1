@@ -1,7 +1,20 @@
-﻿
+﻿@model IEnumerable<HTTP5212_HospitalProject_Team1.Models.PaySlipDto>
+
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h2>List PaySlips</h2>
+<a href="/Payslip/new">Add Payslip</a>
+
+@foreach (var payslip in Model)
+{
+    <h3><a href="/PaySlip/Details/@payslip.PaySlipID">@payslip.EmployeeFirstName @payslip.EmployeeLastName</a></h3>
+    <div>Sin number: @payslip.PaySlipSinNum</div>
+    <div>Hourly wage: @payslip.PaySlipHourlyWage</div>
+    <div>Hours worked: @payslip.PaySlipHoursWorked</div>
+    <div>Payment date: @payslip.PaySlipPaymentDate</div>
+
+}
+
 

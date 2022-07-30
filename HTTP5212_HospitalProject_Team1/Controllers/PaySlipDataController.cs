@@ -112,17 +112,17 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         // POST: api/PaySlipData/AddPaySlip
         [ResponseType(typeof(PaySlip))]
         [HttpPost]
-        public IHttpActionResult AddPaySlip(PaySlip paySlip)
+        public IHttpActionResult AddPaySlip(PaySlip payslip)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.PaySlips.Add(paySlip);
+            db.PaySlips.Add(payslip);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = paySlip.PaySlipID }, paySlip);
+            return CreatedAtRoute("DefaultApi", new { id = payslip.PaySlipID }, payslip);
         }
 
         // POST: api/PaySlipData/DeletePaySlip/5
