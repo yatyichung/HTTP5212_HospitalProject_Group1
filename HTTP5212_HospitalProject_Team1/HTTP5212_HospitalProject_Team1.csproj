@@ -392,6 +392,14 @@
     <Compile Include="Migrations\202207281437524_changes.designer.cs">
       <DependentUpon>202207281437524_changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207312304443_employee.cs" />
+    <Compile Include="Migrations\202207312304443_employee.designer.cs">
+      <DependentUpon>202207312304443_employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207312329503_EmployeeId-employee.cs" />
+    <Compile Include="Migrations\202207312329503_EmployeeId-employee.designer.cs">
+      <DependentUpon>202207312329503_EmployeeId-employee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -620,6 +628,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207281437524_changes.resx">
       <DependentUpon>202207281437524_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207312304443_employee.resx">
+      <DependentUpon>202207312304443_employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207312329503_EmployeeId-employee.resx">
+      <DependentUpon>202207312329503_EmployeeId-employee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
