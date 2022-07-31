@@ -32,7 +32,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 PatientID = a.Patient.PatientID,
                 FirstName = a.Patient.FirstName,
                 LastName = a.Patient.LastName,
-                EmployeeID = a.Employee.EmployeeID,
+                EmployeeID = a.Employee.EmployeeId,
                 EmployeeFirstName = a.Employee.EmployeeFirstName,
                 EmployeeLastName = a.Employee.EmployeeLastName,
 
@@ -54,7 +54,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 PatientID = appointment.Patient.PatientID,
                 FirstName = appointment.Patient.FirstName,
                 LastName = appointment.Patient.LastName,
-                EmployeeID = appointment.Employee.EmployeeID,
+                EmployeeID = appointment.Employee.EmployeeId,
                 EmployeeFirstName = appointment.Employee.EmployeeFirstName,
                 EmployeeLastName = appointment.Employee.EmployeeLastName,
             };

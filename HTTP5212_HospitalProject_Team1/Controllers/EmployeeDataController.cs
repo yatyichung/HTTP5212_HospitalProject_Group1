@@ -25,7 +25,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             List<EmployeeDto> EmployeeDtos = new List<EmployeeDto>();
             Employees.ForEach(a => EmployeeDtos.Add(new EmployeeDto()
             {
-                EmployeeID = a.EmployeeID,
+                EmployeeId = a.EmployeeId,
                 EmployeeFirstName = a.EmployeeFirstName,
                 EmployeeLastName = a.EmployeeLastName,
                 EmployeeRole = a.EmployeeRole,
@@ -42,7 +42,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             Employee Employee = db.Employees.Find(id);
             EmployeeDto EmployeeDto= new EmployeeDto()
             {
-                EmployeeID = Employee.EmployeeID,
+                EmployeeId = Employee.EmployeeId,
                 EmployeeFirstName = Employee.EmployeeFirstName,
                 EmployeeLastName = Employee.EmployeeLastName,
                 EmployeeRole = Employee.EmployeeRole,
@@ -68,11 +68,11 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != employee.EmployeeID)
+            if (id != employee.EmployeeId)
             {
                 Debug.WriteLine("ID mismatch");
                 Debug.WriteLine("GET parameter " + id);
-                Debug.WriteLine("POST parameter " + employee.EmployeeID);
+                Debug.WriteLine("POST parameter " + employee.EmployeeId);
                 return BadRequest();
             }
 
@@ -112,7 +112,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             db.Employees.Add(employee);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = employee.EmployeeID }, employee);
+            return CreatedAtRoute("DefaultApi", new { id = employee.EmployeeId }, employee);
         }
 
         // POST: api/EmployeesData/DeleteEmployee/5
@@ -143,7 +143,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         private bool EmployeeExists(int id)
         {
-            return db.Employees.Count(e => e.EmployeeID == id) > 0;
+            return db.Employees.Count(e => e.EmployeeId == id) > 0;
         }
     }
 }

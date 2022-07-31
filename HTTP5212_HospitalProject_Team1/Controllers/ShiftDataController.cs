@@ -36,7 +36,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 ShiftThurs = s.ShiftThurs,
                 ShiftFri = s.ShiftFri,
                 ShiftSat = s.ShiftSat,
-                EmployeeID = s.Employee.EmployeeID,
+                EmployeeID = s.Employee.EmployeeId,
                 EmployeeFirstName = s.Employee.EmployeeFirstName,
                 EmployeeLastName = s.Employee.EmployeeLastName
             })); 
@@ -61,7 +61,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 ShiftThurs = shift.ShiftThurs,
                 ShiftFri = shift.ShiftFri,
                 ShiftSat = shift.ShiftSat,
-                EmployeeID = shift.Employee.EmployeeID,
+                EmployeeID = shift.Employee.EmployeeId,
                 EmployeeFirstName = shift.Employee.EmployeeFirstName,
                 EmployeeLastName = shift.Employee.EmployeeLastName
             };

@@ -32,7 +32,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 PaySlipSinNum = p.PaySlipSinNum,
                 PaySlipHourlyWage = p.PaySlipHourlyWage,
                 PaySlipPaymentDate = p.PaySlipPaymentDate,
-                EmployeeID = p.Employee.EmployeeID,
+                EmployeeID = p.Employee.EmployeeId,
                 EmployeeFirstName = p.Employee.EmployeeFirstName,
                 EmployeeLastName = p.Employee.EmployeeLastName
             }));
@@ -52,7 +52,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 PaySlipSinNum = paySlip.PaySlipSinNum,
                 PaySlipHourlyWage = paySlip.PaySlipHourlyWage,
                 PaySlipPaymentDate = paySlip.PaySlipPaymentDate,
-                EmployeeID = paySlip.Employee.EmployeeID,
+                EmployeeID = paySlip.Employee.EmployeeId,
                 EmployeeFirstName = paySlip.Employee.EmployeeFirstName,
                 EmployeeLastName = paySlip.Employee.EmployeeLastName
             };

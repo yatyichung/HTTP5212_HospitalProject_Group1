@@ -32,7 +32,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 PatientID = p.Patient.PatientID,
                 FirstName = p.Patient.FirstName,
                 LastName = p.Patient.LastName,
-                EmployeeID = p.Employee.EmployeeID,
+                EmployeeID = p.Employee.EmployeeId,
                 EmployeeFirstName = p.Employee.EmployeeFirstName,
                 EmployeeLastName = p.Employee.EmployeeLastName
             }));
@@ -44,7 +44,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         // GET: api/PerscriptionData/FindPerscription/5
         [ResponseType(typeof(Perscription))]
         [HttpGet]
-        public IHttpActionResult FindPerscriptionFindPerscription(int id)
+        public IHttpActionResult FindPerscription(int id)
         {
             Perscription Perscription = db.Perscriptions.Find(id);
             PerscriptionDto PerscriptionDto = new PerscriptionDto()
@@ -56,7 +56,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 PatientID = Perscription.Patient.PatientID,
                 FirstName = Perscription.Patient.FirstName,
                 LastName = Perscription.Patient.LastName,
-                EmployeeID = Perscription.Employee.EmployeeID,
+                EmployeeID = Perscription.Employee.EmployeeId,
                 EmployeeFirstName = Perscription.Employee.EmployeeFirstName,
                 EmployeeLastName = Perscription.Employee.EmployeeLastName
             };

@@ -1,5 +1,5 @@
-﻿@{@model HTTP5212_HospitalProject_Team1.Models.ViewModels.UpdateEmployee
-
+﻿@model HTTP5212_HospitalProject_Team1.Models.EmployeeDto
+@{
     ViewBag.Title = "Edit";
 }
 <div class="back-list">
@@ -9,22 +9,22 @@
 <h2>Update Employee</h2>
 
 <div class="form-wrapper">
-    <form class="form-floating mb-3" action="/Employee/Update/@Model.SelectedEmployee.EmployeeID" method="POST">
+    <form class="form-floating mb-3" action="/Employee/Update/@Model.EmployeeId" method="POST">
         <div class="input-wrapper">
             <div style="display:none;">
-                <input class="form-control" id="floatingInput" type="text" name="EmployeeId" value="@Model.SelectedEmployee.EmployeeID" />
+                <input class="form-control" id="floatingInput" type="text" name="EmployeeId" value="@Model.EmployeeId" />
             </div>
             <div>
-                <label for="floatingInput">Empoloyee First Name:</label> <input class="form-control" id="floatingInput" type="text" name="FirstName" value="@Model.SelectedEmployee.EmployeeFirstName" />
+                <label for="floatingInput">Empoloyee First Name:</label> <input class="form-control" id="floatingInput" type="text" name="EmployeeFirstName" value="@Model.EmployeeFirstName" />
             </div>
             <div>
-                <label for="floatingInput">Empoloyee Last Name:</label> <input class="form-control" id="floatingInput" type="text" name="LastName" value="@Model.SelectedEmployee.EmployeeLastName" />
+                <label for="floatingInput">Empoloyee Last Name:</label> <input class="form-control" id="floatingInput" type="text" name="EmployeeLastName" value="@Model.EmployeeLastName" />
             </div>
             <div>
-                <label for="floatingInput">Empoloyee Role:</label> <input class="form-control" id="floatingInput" type="text" name="Role" value="@Model.SelectedEmployee.EmployeeRole" />
+                <label for="floatingInput">Empoloyee Role:</label> <input class="form-control" id="floatingInput" type="text" name="EmployeeRole" value="@Model.EmployeeRole" />
             </div>
             <div>
-                <label for="floatingInput">Join Date:</label> <input class="form-control" id="floatingInput" type="datetime" name="Joindate" value="@Model.SelectedEmployee.EmployeeJoinDate" />
+                <label for="floatingInput">Join Date:</label> <input class="form-control" id="floatingInput" type="date" name="EmployeeJoinDate" value="@Model.EmployeeJoinDate" />
             </div>
             <div>
                 <input class="btn btn-primary add-button" type="submit" value="Update Employee" />
