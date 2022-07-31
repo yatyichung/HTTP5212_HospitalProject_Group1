@@ -1,7 +1,12 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.ServiceDto
+
 @{
     ViewBag.Title = "DeleteConfirm";
 }
 
-<h2>DeleteConfirm</h2>
+<h2>>Are you sure you want to delete @Model.serv_name?</h2>
 
+<form action="/Service/Delete/@Model.serv_id" method="POST">
+    <input type="submit" value="Confirm Delete" />
+    <a href="/Service/Details/@Model.serv_id">Cancel</a>
+</form>

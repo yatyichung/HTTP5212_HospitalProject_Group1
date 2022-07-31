@@ -1,7 +1,13 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.ServiceDto
 @{
     ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
 
+<h3>@Model.serv_name</h3>
+<div>@Model.serv_desc</div>
+
+<p><a href="/Service/Edit/@Model.serv_id">Edit</a></p>
+<p><a href="/Service/DeleteConfirm/@Model.serv_id">Delete</a></p>
+<p><a href="/Service/List">Back to Department List</a></p>

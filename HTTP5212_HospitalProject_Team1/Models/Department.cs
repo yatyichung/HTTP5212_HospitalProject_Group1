@@ -13,4 +13,11 @@ namespace HTTP5212_HospitalProject_Team1.Models
         public string dept_name { get; set; }
         public string dept_desc { get; set; }
     }
+    public class DepartmentDto
+    {
+        [Key]
+        public int dept_id { get; set; }
+        public string dept_name { get; set; }
+        public string dept_desc { get; set; }
+    }
 }
