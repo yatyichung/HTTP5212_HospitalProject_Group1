@@ -1,7 +1,16 @@
 ﻿
+@model HTTP5212_HospitalProject_Team1.Models.PerscriptionDto
+
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<a href="/Perscription/List" type="button" class="btn btn-warning">Back to list</a>
+<a href="/Perscription/DeleteConfirm/@Model.PrescriptionId" type="button" class="btn btn-danger ">Delete</a>
 
+
+<h2>Patient Name: @Model.FirstName @Model.LastName</h2>
+<div>Date: @Model.DateOfPrescription</div>
+<div>Perscription: @Model.Prescription</div>
+<div>Dosage: @Model.Dosage</div>
+<h2>Employee Name: @Model.EmployeeFirstName @Model.EmployeeLastName</h2>

@@ -1,7 +1,40 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.PerscriptionDto
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
+<div class="back-list">
+    <a href="/Perscription/List">Go Back To Room List</a>
+    <p> / </p>
+    <a href="/Perscription/Details/@Model.PrescriptionId">Go Back To Details</a>
+</div>
+<h2 class="create-title">Update Room For @Model.Prescription</h2>
+<div class="form-wrapper">
+    <form class="form-floating mb-3" action="/Room/Update/@Model.PrescriptionId" method="POST">
+        <div class="input-wrapper">
+            <div style="display:none;">
+                @* Pass through the Perscription ID *@
+                <input class="form-control" id="floatingInput" type="text" name="PrescriptionId" value="@Model.PrescriptionId" />
+            </div>
+            <div>
+                <label for="floatingInput">Perscription:</label> <input class="form-control" id="floatingInput" type="text" name="Prescription" value="@Model.Prescription" />
+            </div>
+            <div>
+                <label for="floatingInput">Date:</label> <input class="form-control" id="floatingInput" type="date" name="DateOfPrescription" value="@Model.DateOfPrescription" />
+            </div>
+            <div>
+                <label for="floatingInput">Dosage:</label> <input class="form-control" id="floatingInput" type="text" name="Dosage" value="@Model.Dosage" />
+            </div>   
+        
+        <div>
+            <label for="floatingInput">Patient:</label> <input class="form-control" id="floatingInput" type="text" name="PatientID" value="@Model.PatientID" />
+        </div>
+        <div>
+            <label for="floatingInput">Employee:</label> <input class="form-control" id="floatingInput" type="text" name="EmployeeID" value="@Model.EmployeeID" />
+        </div>
+        <div>
+            <input class="btn btn-primary add-button" type="submit" value="Update Room" />
+        </div>
+        
+        </form>
+    </div>

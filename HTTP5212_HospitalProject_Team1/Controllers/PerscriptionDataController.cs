@@ -16,28 +16,63 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/PerscriptionData
-        public IQueryable<Perscription> GetPerscriptions()
+        // GET: api/PerscriptionData/ListPerscription
+        [HttpGet]
+        public IEnumerable<PerscriptionDto> ListPerscription()
         {
-            return db.Perscriptions;
+            List<Perscription> Perscriptions = db.Perscriptions.ToList();
+            List<PerscriptionDto> PerscriptionDtos = new List<PerscriptionDto>();
+
+            Perscriptions.ForEach(p => PerscriptionDtos.Add(new PerscriptionDto()
+            {
+                PrescriptionId = p.PrescriptionId,
+                DateOfPrescription = p.DateOfPrescription,
+                Prescription = p.Prescription,
+                Dosage = p.Dosage,
+                PatientID = p.Patient.PatientID,
+                FirstName = p.Patient.FirstName,
+                LastName = p.Patient.LastName,
+                EmployeeID = p.Employee.EmployeeID,
+                EmployeeFirstName = p.Employee.EmployeeFirstName,
+                EmployeeLastName = p.Employee.EmployeeLastName
+            }));
+
+                return PerscriptionDtos;
         }
 
-        // GET: api/PerscriptionData/5
+
+        // GET: api/PerscriptionData/FindPerscription/5
         [ResponseType(typeof(Perscription))]
-        public IHttpActionResult GetPerscription(int id)
+        [HttpGet]
+        public IHttpActionResult FindPerscriptionFindPerscription(int id)
         {
-            Perscription perscription = db.Perscriptions.Find(id);
-            if (perscription == null)
+            Perscription Perscription = db.Perscriptions.Find(id);
+            PerscriptionDto PerscriptionDto = new PerscriptionDto()
+            {
+                PrescriptionId = Perscription.PrescriptionId,
+                DateOfPrescription = Perscription.DateOfPrescription,
+                Prescription = Perscription.Prescription,
+                Dosage = Perscription.Dosage,
+                PatientID = Perscription.Patient.PatientID,
+                FirstName = Perscription.Patient.FirstName,
+                LastName = Perscription.Patient.LastName,
+                EmployeeID = Perscription.Employee.EmployeeID,
+                EmployeeFirstName = Perscription.Employee.EmployeeFirstName,
+                EmployeeLastName = Perscription.Employee.EmployeeLastName
+            };
+
+            if (Perscription == null)
             {
                 return NotFound();
             }
 
-            return Ok(perscription);
+            return Ok(PerscriptionDto);
         }
 
-        // PUT: api/PerscriptionData/5
+        // Post: api/PerscriptionData/UpdatePerscription/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPerscription(int id, Perscription perscription)
+        [HttpPost]
+        public IHttpActionResult UpdatePerscription(int id, Perscription perscription)
         {
             if (!ModelState.IsValid)
             {
@@ -70,9 +105,10 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/PerscriptionData
+        // POST: api/PerscriptionData/AddPerscription
         [ResponseType(typeof(Perscription))]
-        public IHttpActionResult PostPerscription(Perscription perscription)
+        [HttpPost]
+        public IHttpActionResult AddPerscription(Perscription perscription)
         {
             if (!ModelState.IsValid)
             {
@@ -85,8 +121,9 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return CreatedAtRoute("DefaultApi", new { id = perscription.PrescriptionId }, perscription);
         }
 
-        // DELETE: api/PerscriptionData/5
+        // DELETE: api/PerscriptionData/DeletePerscription/5
         [ResponseType(typeof(Perscription))]
+        [HttpPost]
         public IHttpActionResult DeletePerscription(int id)
         {
             Perscription perscription = db.Perscriptions.Find(id);

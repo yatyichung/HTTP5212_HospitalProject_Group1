@@ -1,7 +1,23 @@
-﻿
+﻿@model IEnumerable<HTTP5212_HospitalProject_Team1.Models.PerscriptionDto>
 @{
     ViewBag.Title = "List";
 }
 
 <h2>List</h2>
+<div class="back-list">
+    <a href="/Perscription/New">Add Perscription</a>
+</div>
 
+@foreach (var perscription in Model)
+{
+    <h3>Perscription<a href="/Perscription/Details/@perscription.PrescriptionId"> @perscription.Prescription</a></h3>
+    <div>Date Type: @perscription.DateOfPrescription</div>
+    <div>Dosage Type: @perscription.Dosage</div>
+    <div>Patient FirstName Type: @perscription.FirstName</div>
+    <div>Patient LastName Type: @perscription.LastName</div>
+    <div>Employee FirstName Type: @perscription.EmployeeFirstName</div>
+    <div>Employee LastName Type: @perscription.EmployeeLastName</div>
+
+
+
+}
