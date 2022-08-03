@@ -6,7 +6,8 @@
 <h2>Patients</h2>
 <a href="/Patient/New">New Patient</a>
 @foreach (var patient in Model) { 
-    <h2><a href="/Patient/Details/@patient.PAtientId">@patient.FirstName @patient.LastName</a></h2>
-    <div>Role: @employee.EmployeeRole</div>
+    <h2><a href="/Patient/Details/@patient.PatientId">@patient.FirstName @patient.LastName</a></h2>
+      <div>Phone: @patient.Address</div>
+    <div>Phone: @patient.Phone</div>
 }
 
