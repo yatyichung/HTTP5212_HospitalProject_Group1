@@ -3,7 +3,7 @@
 <h3>Sunny</h3>
 Models (payslips.cs, shifts.cs)
 <br>
-Views (shift, payslip)
+Views (payslip,shift)
 <br>
 Controller (PaySlipDataController.cs, PaySlipController.cs, ShiftDataController.cs, ShiftController.cs)
 
