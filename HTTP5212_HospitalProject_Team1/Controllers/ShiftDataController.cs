@@ -65,8 +65,6 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         /// <example>
         /// GET: api/ShiftData/FindShift/5
         /// </example>
-
-      
         [ResponseType(typeof(Shift))]
         [HttpGet]
         public IHttpActionResult FindShift(int id)
