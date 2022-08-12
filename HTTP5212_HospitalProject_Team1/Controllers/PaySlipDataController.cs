@@ -18,7 +18,16 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/PaySlipData/ListPaySlips
+
+        /// <summary>
+        /// Returns all payslips in the system.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: all payslips in the database, linking the correspond employees
+        /// </returns>
+        /// <example>
+        /// GET: api/PaySlipData/ListPaySlips
+        /// </example>
         [HttpGet]
         public IEnumerable<PaySlipDto> ListPaySlips()
         {
@@ -38,8 +47,19 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             }));
             return PaySlipDtos;
         }
-
-        // GET: api/PaySlipData/FindPaySlip/5
+        
+        /// <summary>
+        /// Returns all payslips in the system.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: A payslip in the system matching up to the payslip ID primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the payslip</param>
+        /// <example>
+        /// GET: api/PaySlipData/FindPaySlip/5
+        /// </example>
         [ResponseType(typeof(PaySlip))]
         [HttpGet]
         public IHttpActionResult FindPaySlip(int id)
@@ -67,7 +87,22 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return Ok(PaySlipDto);
         }
 
-        // POST: api/PaySlipData/UpdatePaySlip/5
+        /// <summary>
+        /// Update a payslip information in the system using POST data input
+        /// </summary>
+        /// <param name="id">Represents the PaySlip ID primary key</param>
+        /// <param name="payslip">JSON FORM DATA of a payslip</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/PaySlipData/UpdatePaySlip/5
+        /// FORM DATA: PaySlip JSON Object
+        /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdatePaySlip(int id, PaySlip paySlip)
@@ -108,8 +143,21 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             Debug.WriteLine("None of the conditions triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/PaySlipData/AddPaySlip
+        
+        /// <summary>
+        /// Add a payslip to the system
+        /// </summary>
+        /// <param name="payslip">JSON FORM DATA of a payslip</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: payslip ID, payslip Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/PaySlipData/AddPaySlip
+        /// FORM DATA: PaySlip JSON Object
+        /// </example>
         [ResponseType(typeof(PaySlip))]
         [HttpPost]
         public IHttpActionResult AddPaySlip(PaySlip payslip)
@@ -125,7 +173,19 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return CreatedAtRoute("DefaultApi", new { id = payslip.PaySlipID }, payslip);
         }
 
-        // POST: api/PaySlipData/DeletePaySlip/5
+        /// <summary>
+        /// Deletes a payslip from the system by it's ID (will only affect shift table).
+        /// </summary>
+        /// <param name="id">The primary key of the payslip</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST: api/PaySlipData/DeletePaySlip/5
+        /// FORM DATA: (empty)
+        /// </example>
         [ResponseType(typeof(PaySlip))]
         [HttpPost]
         public IHttpActionResult DeletePaySlip(int id)
