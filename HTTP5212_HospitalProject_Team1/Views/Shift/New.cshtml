@@ -4,38 +4,139 @@
 }
 
 <h2>Create Shift</h2>
-<form action="/Shift/Create" method="POST">
+<form action="/Shift/Create" method="POST" name="addShiftForm">
     <div>
         <label>Employee ID:</label><input type="number" name="EmployeeID"/>
+        <span style="display:none" id="alertBoxEmployeeId">Invalid Input!</span>
     </div>
     <div>
         <label>Shift time:</label><input type="text" name="ShiftTime" placeholder="Day/Night" />
+        <span style="display:none" id="alertBoxShiftTime">Invalid Input!</span>
     </div>
     <div>
         <label>Sunday:</label><input type="text" name="ShiftSun" placeholder="True/False" />
+        <span style="display:none" id="alertBoxShiftSun">Invalid Input!</span>
     </div>
     <div>
         <label>Monday:</label><input type="text" name="ShiftMon" placeholder="True/False" />
+        <span style="display:none" id="alertBoxShiftMon">Invalid Input!</span>
     </div>
     <div>
         <label>Tuesday:</label><input type="text" name="ShiftTues" placeholder="True/False" />
+        <span style="display:none" id="alertBoxShiftTues">Invalid Input!</span>
     </div>
     <div>
         <label>Wedesday:</label><input type="text" name="ShiftWed" placeholder="True/False" />
+        <span style="display:none" id="alertBoxShiftWed">Invalid Input!</span>
 
     </div>
     <div>
         <label>Thursday:</label><input type="text" name="ShiftThurs" placeholder="True/False" />
+        <span style="display:none" id="alertBoxShiftThurs">Invalid Input!</span>
     </div>
     <div>
         <label>Friday:</label><input type="text" name="ShiftFri" placeholder="True/False" />
+        <span style="display:none" id="alertBoxShiftFri">Invalid Input!</span>
     </div>
     <div>
         <label>Saturday:</label><input type="text" name="ShiftSat" placeholder="True/False" />
+        <span style="display:none" id="alertBoxShiftSat">Invalid Input!</span>
     </div>
     <div>
         <input type="submit" value="Add Shift" />
     </div>
 </form>
 
+<!--client side form validation-->
+<script>
+    window.onload = function () {
+        var formHandle = document.forms.addShiftForm;
+        var alertBoxShiftTime = document.getElementById("alertBoxShiftTime");
+        var alertBoxShiftSun = document.getElementById("alertBoxShiftSun");
+        var alertBoxShiftMon = document.getElementById("alertBoxShiftMon");
+        var alertBoxShiftTues = document.getElementById("alertBoxShiftTues");
+        var alertBoxShiftWed = document.getElementById("alertBoxShiftWed");
+        var alertBoxShiftThurs = document.getElementById("alertBoxShiftThurs");
+        var alertBoxShiftFri = document.getElementById("alertBoxShiftFri");
+        var alertBoxShiftSat = document.getElementById("alertBoxShiftSat");
+        
+        formHandle.onsubmit = processForm;
+        
+        function processForm() {
+            var ShiftTime = formHandle.ShiftTime;
+            if (ShiftTime.value === "" || ShiftTime.value === null) {
+                ShiftTime.focus();
+                alertBoxShiftTime.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxShiftTime.style.display = "none";
+            }
+            
+            var ShiftSun = formHandle.ShiftSun;
+            if (ShiftSun.value === "" || ShiftSun.value === null) {
+                ShiftSun.focus();
+                alertBoxShiftSun.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxShiftSun.style.display = "none";
+            }
+            
+             var ShiftMon = formHandle.ShiftMon;
+            if (ShiftMon.value === "" || ShiftMon.value === null) {
+                ShiftMon.focus();
+                alertBoxShiftMon.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxShiftMon.style.display = "none";
+            }
+            
+            var ShiftTues = formHandle.ShiftTues;
+            if (ShiftTues.value === "" || ShiftTues.value === null) {
+                ShiftTues.focus();
+                alertBoxShiftTues.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxShiftTues.style.display = "none";
+            }
+            
+            var ShiftWed = formHandle.ShiftWed;
+            if (ShiftWed.value === "" || ShiftWed.value === null) {
+                ShiftWed.focus();
+                alertBoxShiftWed.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxShiftWed.style.display = "none";
+            }
+            
+            
+             var ShiftThurs = formHandle.ShiftThurs;
+            if (ShiftThurs.value === "" || ShiftThurs.value === null) {
+                ShiftThurs.focus();
+                alertBoxShiftThurs.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxShiftThurs.style.display = "none";
+            }
+            
+              var ShiftFri = formHandle.ShiftFri;
+            if (ShiftFri.value === "" || ShiftFri.value === null) {
+                ShiftFri.focus();
+                alertBoxShiftFri.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxShiftFri.style.display = "none";
+            }
+            
+             var ShiftSat = formHandle.ShiftSat;
+            if (ShiftSat.value === "" || ShiftSat.value === null) {
+                ShiftSat.focus();
+                alertBoxShiftSat.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxShiftSat.style.display = "none";
+            }
+            
 
+        }
+    }
+</script>
