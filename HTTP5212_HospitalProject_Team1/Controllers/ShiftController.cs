@@ -25,7 +25,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
 
 
-
+        [Authorize]
         // GET: Shift/List
         public ActionResult List()
         {
@@ -45,7 +45,8 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return View(shifts);
         }
-
+    
+         [Authorize]
         // GET: Shift/Details/5
         public ActionResult Details(int id)
         {
@@ -64,7 +65,8 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return View(selectedshift);
         }
-
+        
+        [Authorize]
         public ActionResult Error()
         {
             return View();
@@ -85,6 +87,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Shift/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Shift shift)
         {
             Debug.WriteLine("The json payload is: ");
@@ -117,6 +120,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: Shift/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
 
@@ -139,6 +143,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Shift/Update/5
         [HttpPost]
+        [Authorize]
         public ActionResult Update(int id, Shift shift)
         {
             //objective: update the shift info in the system
@@ -163,6 +168,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Shift/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "shiftdata/findshift/" + id;
@@ -173,6 +179,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Shift/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             string url = "shiftdata/deleteshift/" + id;
