@@ -58,7 +58,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // PUT: api/PatientsData/UpdatePatient/5
         [ResponseType(typeof(void))]
-        [HttpGet]
+        [HttpPost]
         public IHttpActionResult UpdatePatient(int id, Patient patient)
         {
             Debug.WriteLine("I have reached the update PAtient method!");
