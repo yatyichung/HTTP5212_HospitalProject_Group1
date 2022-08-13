@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Diagnostics;
+Microsoft.AspNetCore.Authorization;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
@@ -35,6 +36,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: api/EmployeesData/FindEmployee/5
+        [Authorize]
         [ResponseType(typeof(Employee))]
         [HttpGet]
         public IHttpActionResult FindEmployee(int id)
@@ -57,6 +59,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: api/EmployeesData/UpdateEmployee/5
+         [Authorize]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateEmployee(int id, Employee employee)
@@ -100,6 +103,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: api/EmployeesData/AddEmployee
+         [Authorize]
         [ResponseType(typeof(Employee))]
         [HttpPost]
         public IHttpActionResult AddEmployee(Employee employee)
@@ -116,6 +120,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: api/EmployeesData/DeleteEmployee/5
+         [Authorize]
         [ResponseType(typeof(Employee))]
         [HttpPost]
         public IHttpActionResult DeleteEmployee(int id)
