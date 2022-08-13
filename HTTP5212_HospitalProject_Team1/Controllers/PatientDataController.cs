@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using HTTP5212_HospitalProject_Team1.Models;
+Microsoft.AspNetCore.Authorization;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
@@ -34,7 +35,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return PatientDtos;
         }
 
-        // GET: api/PatientsData/FindPAtient/5
+        // GET: api/PatientsData/FindPatient/5
         [ResponseType(typeof(Patient))]
         [HttpGet]
         public IHttpActionResult FindPatient(int id)
@@ -57,6 +58,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // PUT: api/PatientsData/UpdatePatient/5
+        [Authorize]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdatePatient(int id, Patient patient)
@@ -100,6 +102,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: api/PatientsData/AddPatient
+        [Authorize]
         [ResponseType(typeof(Patient))]
         [HttpPost]
         public IHttpActionResult AddPatient(Patient patient)
@@ -116,6 +119,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // DELETE: api/PatientsData/DeletePatient/5
+        [Authorize]
         [ResponseType(typeof(Patient))]
         public IHttpActionResult DeletePatient(int id)
         {
