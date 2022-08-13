@@ -4,24 +4,83 @@
 }
 
 <h2>Create Payslip</h2>
-<form action="/PaySlip/Create" method="POST">
+<form action="/PaySlip/Create" method="POST" name="addPayslipForm">
     <div>
         <label>Employee ID:</label><input type="number" name="EmployeeID" />
     </div>
     <div>
-        <label>Sin Number:</label><input type="number" name="PaySlipSinNum" placeholder="ex. 927483719" />
+        <label>Sin Number:</label><input type="number" name="PaySlipSinNum" placeholder="ex. 927483719" id="PaySlipSinNum"/>
+        <span style="display:none" id="alertBoxPaySlipSinNum">Invalid Input!</span>
     </div>
     <div>
-        <label>Hourly wage:</label><input type="number" name="PaySlipHourlyWage" placeholder="ex. 35" />
+        <label>Hourly wage:</label><input type="number" name="PaySlipHourlyWage" placeholder="ex. 35" id="PaySlipHourlyWage" />
+        <span style="display:none" id="alertBoxPaySlipHourlyWage">Invalid Input!</span>
     </div>
     <div>
-        <label>Hours worked:</label><input type="number" name="PaySlipHoursWorked" placeholder="ex. 79" />
+        <label>Hours worked:</label><input type="number" name="PaySlipHoursWorked" placeholder="ex. 79" id="PaySlipHoursWorked" />
+        <span style="display:none" id="alertBoxPaySlipHoursWorked">Invalid Input!</span>
     </div>
     <div>
-        <label>Payment date:</label><input type="datetime-local" name="PaySlipPaymentDate" />
+        <label>Payment date:</label><input type="datetime-local" name="PaySlipPaymentDate" id="PaySlipPaymentDate"/>
+        <span style="display:none" id="alertBoxPaySlipPaymentDate">Invalid Input!</span>
     </div>
 
     <div>
         <input type="submit" value="Add Payslip" />
     </div>
 </form>
+
+<!--client side form validation-->
+<script>
+    window.onload = function () {
+        var formHandle = document.forms.addPayslipForm;
+        var alertBoxPaySlipSinNum = document.getElementById("alertBoxPaySlipSinNum");
+        var alertBoxPaySlipHourlyWage = document.getElementById("alertBoxPaySlipHourlyWage");
+        var alertBoxPaySlipHoursWorked = document.getElementById("alertBoxPaySlipHoursWorked");
+        var alertBoxPaySlipPaymentDate = document.getElementById("alertBoxPaySlipPaymentDate");
+
+        
+        formHandle.onsubmit = processForm;
+        
+        function processForm() {
+            var PaySlipSinNum = formHandle.PaySlipSinNum;
+            if (PaySlipSinNum.value === "" || PaySlipSinNum.value === null) {
+                PaySlipSinNum.focus();
+                alertBoxPaySlipSinNum.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxPaySlipSinNum.style.display = "none";
+            }
+            
+            var PaySlipHourlyWage = formHandle.PaySlipHourlyWage;
+            if (PaySlipHourlyWage.value === "" || PaySlipHourlyWage.value === null) {
+                PaySlipHourlyWage.focus();
+                alertBoxPaySlipHourlyWage.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxPaySlipHourlyWage.style.display = "none";
+            }
+            
+             var PaySlipHoursWorked = formHandle.PaySlipHoursWorked;
+            if (PaySlipHoursWorked.value === "" || PaySlipHoursWorked.value === null) {
+                PaySlipHoursWorked.focus();
+                alertBoxPaySlipHoursWorked.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxPaySlipHoursWorked.style.display = "none";
+            }
+            
+            var PaySlipPaymentDate = formHandle.PaySlipPaymentDate;
+            if (PaySlipPaymentDate.value === "" || PaySlipPaymentDate.value === null) {
+                PaySlipPaymentDate.focus();
+                alertBoxPaySlipPaymentDate.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxPaySlipPaymentDate.style.display = "none";
+            }
+            
+        
+            
+        }
+    }
+</script>
