@@ -17,8 +17,18 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
     public class PatientDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
+        
+        /// <summary>
+        /// Returns all patients in the system.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: all patients in the database
+        /// </returns>
+        /// <example>
+        /// GET: api/PatientsData/Listpatient
+        /// </example>
 
-        // GET: api/PatientsData/Listpatient
         [HttpGet]
         public IEnumerable<PatientDto> ListPatients()
         {
@@ -34,8 +44,16 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             }));
             return PatientDtos;
         }
-
-        // GET: api/PatientsData/FindPatient/5
+        
+        /// <summary>
+        /// Returns patient in the system with specified id.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: patient in the system with specified id
+        /// </returns>
+        /// <example>
+        /// GET: api/PatientsData/FindPatient/5
+        /// </example>
         [ResponseType(typeof(Patient))]
         [HttpGet]
         public IHttpActionResult FindPatient(int id)
@@ -56,14 +74,23 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return Ok(PatientDto);
         }
+        
+          /// <summary>
+        /// updates patient in the system with specified id.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: update in the system with specified id
+        /// </returns>
+        /// <example>
+        /// PUT: api/PatientsData/UpdatePatient/5
+        /// </example>
 
-        // PUT: api/PatientsData/UpdatePatient/5
         [Authorize]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdatePatient(int id, Patient patient)
         {
-            Debug.WriteLine("I have reached the update PAtient method!");
+            Debug.WriteLine("I have reached the update Patient method!");
             if (!ModelState.IsValid)
             {
                 Debug.WriteLine("Model state is invalid!");
@@ -100,8 +127,17 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+        
+           /// <summary>
+        /// Adds patient in the database.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: Adds patient in the database
+        /// </returns>
+        /// <example>
+        /// POST: api/PatientsData/AddPatient
+        /// </example>
 
-        // POST: api/PatientsData/AddPatient
         [Authorize]
         [ResponseType(typeof(Patient))]
         [HttpPost]
@@ -117,8 +153,17 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = patient.PatientId }, patient);
         }
+        
+         /// <summary>
+        /// Deletes patient in the database with specified id.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: delete patient in the database with specified id.
+        /// </returns>
+        /// <example>
+        /// DELETE: api/PatientsData/DeletePatient/5
+        /// </example>
 
-        // DELETE: api/PatientsData/DeletePatient/5
         [Authorize]
         [ResponseType(typeof(Patient))]
         public IHttpActionResult DeletePatient(int id)
