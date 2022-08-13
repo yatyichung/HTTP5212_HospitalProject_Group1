@@ -1,7 +1,35 @@
-﻿
+@model HTTP5212_HospitalProject_Team1.Models.PatientDto
 @{
     ViewBag.Title = "Edit";
 }
+<div class="back-list">
+    <a href="/Patient/List">Go Back To Patients List</a>
+</div>
 
-<h2>Edit</h2>
+<h2>Update Patient</h2>
+
+<div class="form-wrapper">
+    <form class="form-floating mb-3" action="/Patient/Update/@Model.PatientId" method="POST">
+        <div class="input-wrapper">
+            <div style="display:none;">
+                <input class="form-control" id="floatingInput" type="text" name="PatientId" value="@Model.PatientId" />
+            </div>
+            <div>
+                <label for="floatingInput">Patient First Name:</label> <input class="form-control" id="floatingInput" type="text" name="FirstName" value="@Model.FirstName" />
+            </div>
+            <div>
+                <label for="floatingInput">Patient Last Name:</label> <input class="form-control" id="floatingInput" type="text" name="LastName" value="@Model.LastName" />
+            </div>
+            <div>
+                <label for="floatingInput">Patient Address:</label> <input class="form-control" id="floatingInput" type="text" name="Address" value="@Model.Address" />
+            </div>
+            <div>
+                <label for="floatingInput">Patient Phone:</label> <input class="form-control" id="floatingInput" type="date" name="Phone" value="@Model.Phone" />
+            </div>
+            <div>
+                <input class="btn btn-primary add-button" type="submit" value="Update Patient" />
+            </div>
+        </div>
+    </form>
+</div>
 

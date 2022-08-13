@@ -1,7 +1,43 @@
-﻿
+﻿@model HTTP5212_HospitalProject_Team1.Models.ViewModels.UpdateService
+
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit @Model.selectedservice.serv_name</h2>
+
+<form action="/Service/Update/@Model.selectedservice.serv_id" method="POST" enctype="multipart/form-data">
+    <div style="display:none;">
+        <input type="text" name="serv_id" value="@Model.selectedservice.serv_id" />
+    </div>
+
+    <div>
+        <label>Service Name:</label>
+        <input type="text" name="serv_name" value="@Model.selectedservice.serv_name" />
+    </div>
+    <div>
+        <label>Service Description:</label>
+        <input type="text" name="serv_desc" value="@Model.selectedservice.serv_desc" />
+    </div>
+
+    <div>
+        <label>Department:</label>
+        <select name="DepartmentId" class="form-control">
+                @foreach (var department in Model.DeptOptions)
+                {
+                    string selected = "";
+                    if (department.dept_id == Model.selectedservice.DepartmentId)
+                    {
+                        selected = "selected";
+                    }
+                    <option value="@department.dept_id" @selected>@department.dept_name</option>
+                }
+        </select>
+    </div>
+    <div>
+        <button type="submit" value="Update Service">Submit</button>
+        <a href="/Service/Details/@Model.selectedservice.serv_id">Cancel</a>
+    </div>
+</form>
+
 

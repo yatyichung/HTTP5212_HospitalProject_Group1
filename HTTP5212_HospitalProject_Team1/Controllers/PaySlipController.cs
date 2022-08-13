@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Diagnostics;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
+using Microsoft.AspNetCore.Authorization;
 using HTTP5212_HospitalProject_Team1.Models.ViewModels;
 
 
@@ -26,6 +27,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
 
         // GET: PaySlip/List
+        [Authorize]
         public ActionResult List()
         {
             //retrieve a list of payslips from payslipdatacontroller
@@ -46,6 +48,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: PaySlip/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             //retrieve one payslip from payslipdatacontroller
@@ -63,13 +66,15 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return View(selectedpayslip);
         }
-
+        
+        [Authorize]
         public ActionResult Error()
         {
             return View();
         }
 
         // GET: PaySlip/New
+        [Authorize]
         public ActionResult New()
         {
             //api/payslipdata/addpayslip
@@ -84,6 +89,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: PaySlip/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(PaySlip payslip)
         {
             Debug.WriteLine("The json payload is: ");
@@ -114,6 +120,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: PaySlip/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             UpdatePaySlip ViewModel = new UpdatePaySlip();
@@ -135,6 +142,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: PaySlip/Update/5
         [HttpPost]
+        [Authorize]
         public ActionResult Update(int id, PaySlip payslip)
         {
             //objective: update the payslip info in the system
@@ -158,6 +166,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: PaySlip/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "PaySlipData/findpayslip/" + id;
@@ -168,6 +177,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: PaySlip/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             string url = "PaySlipData/deletepayslip/" + id;

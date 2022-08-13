@@ -10,14 +10,24 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Diagnostics;
+Microsoft.AspNetCore.Authorization;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
     public class EmployeeDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
+          /// <summary>
+        /// Returns all employees in the system.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: all employees in the database
+        /// </returns>
+        /// <example>
+         /// GET: api/EmployeesData/ListEmployee
+        /// </example>
 
-        // GET: api/EmployeesData/ListEmployee
         [HttpGet]
         public IEnumerable<EmployeeDto> ListEmployee()
         {
@@ -25,7 +35,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             List<EmployeeDto> EmployeeDtos = new List<EmployeeDto>();
             Employees.ForEach(a => EmployeeDtos.Add(new EmployeeDto()
             {
-                EmployeeID = a.EmployeeID,
+                EmployeeId = a.EmployeeId,
                 EmployeeFirstName = a.EmployeeFirstName,
                 EmployeeLastName = a.EmployeeLastName,
                 EmployeeRole = a.EmployeeRole,
@@ -33,8 +43,18 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             }));
             return EmployeeDtos;
         }
-
-        // GET: api/EmployeesData/FindEmployee/5
+        
+           /// <summary>
+        /// Returns employee in the system with specified id.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: employees in the database with specified id.
+        /// </returns>
+        /// <example>
+        /// GET: api/EmployeesData/FindEmployee/5
+        /// </example>
+        
+        [Authorize]
         [ResponseType(typeof(Employee))]
         [HttpGet]
         public IHttpActionResult FindEmployee(int id)
@@ -42,7 +62,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             Employee Employee = db.Employees.Find(id);
             EmployeeDto EmployeeDto= new EmployeeDto()
             {
-                EmployeeID = Employee.EmployeeID,
+                EmployeeId = Employee.EmployeeId,
                 EmployeeFirstName = Employee.EmployeeFirstName,
                 EmployeeLastName = Employee.EmployeeLastName,
                 EmployeeRole = Employee.EmployeeRole,
@@ -55,8 +75,18 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return Ok(EmployeeDto);
         }
+        
+         /// <summary>
+        /// update employee in the system with specified id.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: update employees in the database with specified id.
+        /// </returns>
+        /// <example>
+        /// POST: api/EmployeesData/UpdateEmployee/5
+        /// </example>
 
-        // POST: api/EmployeesData/UpdateEmployee/5
+         [Authorize]
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateEmployee(int id, Employee employee)
@@ -68,11 +98,11 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != employee.EmployeeID)
+            if (id != employee.EmployeeId)
             {
                 Debug.WriteLine("ID mismatch");
                 Debug.WriteLine("GET parameter " + id);
-                Debug.WriteLine("POST parameter " + employee.EmployeeID);
+                Debug.WriteLine("POST parameter " + employee.EmployeeId);
                 return BadRequest();
             }
 
@@ -98,8 +128,18 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/EmployeesData/AddEmployee
+        
+         /// <summary>
+        /// add employee in the database.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: add employee in the database.
+        /// </returns>
+        /// <example>
+        /// POST: api/EmployeesData/AddEmployee
+        /// </example>
+        
+         [Authorize]
         [ResponseType(typeof(Employee))]
         [HttpPost]
         public IHttpActionResult AddEmployee(Employee employee)
@@ -112,10 +152,20 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             db.Employees.Add(employee);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = employee.EmployeeID }, employee);
+            return CreatedAtRoute("DefaultApi", new { id = employee.EmployeeId }, employee);
         }
-
+        
+         /// <summary>
+        /// delete employee in the database with specified id.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: delete employee in the database with specified id.
+        /// </returns>
+        /// <example>
         // POST: api/EmployeesData/DeleteEmployee/5
+        /// </example>
+
+         [Authorize]
         [ResponseType(typeof(Employee))]
         [HttpPost]
         public IHttpActionResult DeleteEmployee(int id)
@@ -143,7 +193,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         private bool EmployeeExists(int id)
         {
-            return db.Employees.Count(e => e.EmployeeID == id) > 0;
+            return db.Employees.Count(e => e.EmployeeId == id) > 0;
         }
     }
 }

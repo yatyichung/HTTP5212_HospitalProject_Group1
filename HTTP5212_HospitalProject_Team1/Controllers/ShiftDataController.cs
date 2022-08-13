@@ -17,7 +17,16 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/ShiftData/ListShifts
+
+        /// <summary>
+        /// Returns all shifts in the system.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: all shifts in the database, linking the correspond employees
+        /// </returns>
+        /// <example>
+        /// GET: api/ShiftData/ListShifts
+        /// </example>
         [HttpGet]
         [ResponseType(typeof(ShiftDto))]
         public IEnumerable<ShiftDto> ListShifts()
@@ -36,7 +45,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 ShiftThurs = s.ShiftThurs,
                 ShiftFri = s.ShiftFri,
                 ShiftSat = s.ShiftSat,
-                EmployeeID = s.Employee.EmployeeID,
+                EmployeeID = s.Employee.EmployeeId,
                 EmployeeFirstName = s.Employee.EmployeeFirstName,
                 EmployeeLastName = s.Employee.EmployeeLastName
             })); 
@@ -44,7 +53,18 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return ShiftDtos;
         }
 
-        // GET: api/ShiftData/FindShift/5
+        /// <summary>
+        /// Returns all shifts in the system.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: A shift in the system matching up to the shifts ID primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the shift</param>
+        /// <example>
+        /// GET: api/ShiftData/FindShift/5
+        /// </example>
         [ResponseType(typeof(Shift))]
         [HttpGet]
         public IHttpActionResult FindShift(int id)
@@ -61,7 +81,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 ShiftThurs = shift.ShiftThurs,
                 ShiftFri = shift.ShiftFri,
                 ShiftSat = shift.ShiftSat,
-                EmployeeID = shift.Employee.EmployeeID,
+                EmployeeID = shift.Employee.EmployeeId,
                 EmployeeFirstName = shift.Employee.EmployeeFirstName,
                 EmployeeLastName = shift.Employee.EmployeeLastName
             };
@@ -74,7 +94,22 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return Ok(ShiftDto);
         }
 
-        // POST: api/ShiftData/UpdateShift/5
+          /// <summary>
+        /// Update a shift information in the system using POST data input
+        /// </summary>
+        /// <param name="id">Represents the Shift ID primary key</param>
+        /// <param name="shift">JSON FORM DATA of a shift</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/ShiftData/UpdateShift/5
+        /// FORM DATA: Shift JSON Object
+        /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateShift(int id, Shift shift)
@@ -117,7 +152,20 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ShiftData/AddShift
+        /// <summary>
+        /// Add a shift to the system
+        /// </summary>
+        /// <param name="shift">JSON FORM DATA of a shift</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: shift ID, shift Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/ShiftData/AddShift
+        /// FORM DATA: Shift JSON Object
+        /// </example>
         [ResponseType(typeof(Shift))]
         [HttpPost]
         public IHttpActionResult AddShift(Shift shift)
@@ -133,7 +181,19 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return CreatedAtRoute("DefaultApi", new { id = shift.ShiftID }, shift);
         }
 
-        // POST: api/ShiftData/DeleteShift/5
+        /// <summary>
+        /// Deletes a shift from the system by it's ID (will only affect shift table).
+        /// </summary>
+        /// <param name="id">The primary key of the shift</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST: api/ShiftData/DeleteShift/5
+        /// FORM DATA: (empty)
+        /// </example>
         [ResponseType(typeof(Shift))]
         [HttpPost]
         public IHttpActionResult DeleteShift(int id)

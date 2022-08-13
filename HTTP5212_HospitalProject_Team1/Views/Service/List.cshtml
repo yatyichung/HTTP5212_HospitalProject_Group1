@@ -1,7 +1,18 @@
-﻿
+﻿@model IEnumerable<HTTP5212_HospitalProject_Team1.Models.ServiceDto>
+
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h2>List Services</h2>
 
+@foreach (var Service in Model)
+{
+    <h3><a href="/Service/Details/@Service.serv_id">@Service.serv_name</a></h3>
+    <div>@Service.serv_desc</div>
+    <div>
+    <a href="/Department/Details/@Service.DepartmentId">@Service.DepartmentName</a>
+    </div>
+}
+
+<a href="/Service/New" type="button">Add New Service</a>

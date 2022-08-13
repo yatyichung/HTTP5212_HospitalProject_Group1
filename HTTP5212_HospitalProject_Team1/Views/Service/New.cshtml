@@ -1,7 +1,31 @@
-﻿
+﻿@model IEnumerable<HTTP5212_HospitalProject_Team1.Models.DepartmentDto>
+
+
 @{
     ViewBag.Title = "New";
 }
 
-<h2>New</h2>
+<h2>Create Service</h2>
+<form action="/Service/Create" method="POST">
 
+    <div>
+        <label>Service Name:</label><input type="text" name="serv_name" placeholder="e.g., Dentistry" />
+    </div>
+    <div>
+        <label>Service Description:</label><input type="text" name="serv_desc" placeholder="e.g., outpatient" />
+    </div>
+    <div>
+        <label>Department Number:</label>
+        <select name="dept_id" class="form-control">
+            @foreach (var department in Model)
+            {
+                <option value="@department.dept_id">@department.dept_name</option>
+
+            }
+        </select>
+    </div>
+
+    <div>
+        <input type="submit" value="Add Service" />
+    </div>
+</form>

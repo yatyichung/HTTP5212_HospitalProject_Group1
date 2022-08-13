@@ -17,6 +17,14 @@ namespace HTTP5212_HospitalProject_Team1.Models
         [ForeignKey("Department")]
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
-
+    }
+    public class ServiceDto
+    {
+        [Key]
+        public int serv_id { get; set; }
+        public string serv_name { get; set; }
+        public string serv_desc { get; set; }
+        public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
     }
 }

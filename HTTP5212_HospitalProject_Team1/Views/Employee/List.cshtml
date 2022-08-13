@@ -6,6 +6,6 @@
 <h2>Employees</h2>
 <a href="/Employee/New">New Employee</a>
 @foreach (var employee in Model) { 
-    <h2><a href="/Employee/Details/@employee.EmployeeID">@employee.EmployeeFirstName @employee.EmployeeLastName</a></h2>
+    <h2><a href="/Employee/Details/@employee.EmployeeId">@employee.EmployeeFirstName @employee.EmployeeLastName</a></h2>
     <div>Role: @employee.EmployeeRole</div>
 }

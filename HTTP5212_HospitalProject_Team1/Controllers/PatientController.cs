@@ -1,100 +1,95 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Net.Http;
-using System.Diagnostics;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
-using Microsoft.AspNetCore.Authorization;
-using HTTP5212_HospitalProject_Team1.Models.ViewModels;
+using System.Diagnostics;
+using System.Net.Http;
+Microsoft.AspNetCore.Authorization;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
-    public class DepartmentController : Controller
+    public class PatientController : Controller
     {
-        public static readonly HttpClient client;
+        private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
-        static DepartmentController()
+
+        static PatientController()
         {
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44397/api/");
         }
 
-        // GET: Department/List
-        [System.Web.Mvc.Authorize]
+
+        // GET: Patient/List
         public ActionResult List()
         {
-            string url = "DepartmentData/ListDepartments";
+            
+            string url = "PAtientData/ListPatient";
             HttpResponseMessage response = client.GetAsync(url).Result;
-            IEnumerable<DepartmentDto> departments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
-            return View(departments);
+           
+
+            IEnumerable<PatientDto> employee = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
+           
+
+            return View(employee);
         }
 
-        // GET: Department/Details/5
-        [System.Web.Mvc.Authorize]
+        // GET: Patient/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
-            string url = "DepartmentData/FindDepartment/" + id;
+            //HttpClient client = new HttpClient() { };
+            string url = "PatientData/findPatient/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DepartmentDto selecteddepartment = response.Content.ReadAsAsync<DepartmentDto>().Result;
-            return View(selecteddepartment);
+            //Debug.WriteLine(response.StatusCode);
+
+            PatientDto selectedpatient = response.Content.ReadAsAsync<PatientDto>().Result;
+            //Debug.WriteLine("The number of Employees is:");
+            //Debug.WriteLine(employees.Count());
+
+            return View(selectedpatient);
         }
 
         public ActionResult Error()
         {
+
             return View();
         }
 
-        // GET: Department/New
-        [System.Web.Mvc.Authorize]
 
+        // GET: Employee/New
         public ActionResult New()
         {
+
             return View();
         }
 
-        // POST: Department/Create
-        [HttpPost]
-        [System.Web.Mvc.Authorize]
-        public ActionResult Create(Department department)
+
+        // GET: Patient/Create
+        [Authorize]
+        [HttpGet]
+        public ActionResult Create()
         {
-            string url = "DepartmentData/adddepartment";
-            string jsonpayload = jss.Serialize(department);
+            return View();
+        }
+
+        // POST: Patient/Create
+        [Authorize]
+        [HttpPost]
+        public ActionResult Create(Patient patient)
+        {
+            string url = "PatientData/adpatient";
+
+            //JavaScriptSerializer jss = new JavaScriptSerializer();
+            string jsonpayload = jss.Serialize(patient);
+
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("List");
-            }
-            else
-            {
-                return Redirect("Error");
-            }
-        }
-
-        // GET: Department/Edit/5
-        [System.Web.Mvc.Authorize]
-        public ActionResult Edit(int id)
-        {
-            string url = "DepartmentData/findDepartment/" + id;
-            HttpResponseMessage response = client.GetAsync(url).Result;
-            DepartmentDto selecteddepartment = response.Content.ReadAsAsync<DepartmentDto>().Result;
-            return View(selecteddepartment);
-        }
-
-        // POST: Department/Update/5
-        [HttpPost]
-        [System.Web.Mvc.Authorize]
-        public ActionResult Update(int id, Department department)
-        {
-            string url = "DepartmentData/updatedepartment/" + id;
-            string jsonpayload = jss.Serialize(department);
-            HttpContent content = new StringContent(jsonpayload);
-            content.Headers.ContentType.MediaType = "application/json";
-            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            Debug.WriteLine(response);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("List");
@@ -105,22 +100,55 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             }
         }
 
-        // GET: Department/Delete/5
-        [System.Web.Mvc.Authorize]
-        public ActionResult DeleteConfirm(int id)
+        // GET: Patient/Edit/5
+        [Authorize]
+        public ActionResult Edit(int id)
         {
-            string url = "DepartmentData/finddepartment/" + id;
+            string url = "PatientData/findPatient/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DepartmentDto selecteddepartment = response.Content.ReadAsAsync<DepartmentDto>().Result;
-            return View(selecteddepartment);
+            PatientDto selectedpatient = response.Content.ReadAsAsync<PatientDto>().Result;
+            return View(selectedpatient);
         }
 
-        // POST: Department/Delete/5
+        // POST: Patient/Edit/5
+        [Authorize]
         [HttpPost]
-        [System.Web.Mvc.Authorize]
+        public ActionResult Update(int id, Patient patient)
+        {
+            string url = "PatientData/UpdatePatient/" + id;
+            Debug.WriteLine(url + "This?");
+            string jsonpayload = jss.Serialize(patient);
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            Debug.WriteLine(url);
+            Debug.WriteLine(content);
+            Debug.WriteLine(response);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
+
+        // GET: Patient/Delete/5
+        [Authorize]
+        public ActionResult DeleteConfirm(int id)
+        {
+            string url = "Patientdata/findPatient/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            PatientDto selectedemployee = response.Content.ReadAsAsync<PatientDto>().Result;
+            return View(selectedemployee);
+        }
+
+        // POST: Patient/Delete/5
+        [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "DepartmentData/deletedepartment/" + id;
+            string url = "patientdata/deletepatient/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;

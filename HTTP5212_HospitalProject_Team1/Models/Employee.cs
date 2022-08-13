@@ -10,7 +10,7 @@ namespace HTTP5212_HospitalProject_Team1.Models
     public class Employee
     {
         [Key]
-        public int EmployeeID { get; set; }
+        public int EmployeeId { get; set; }
 
         public string EmployeeFirstName { get; set; }
 
@@ -34,7 +34,12 @@ namespace HTTP5212_HospitalProject_Team1.Models
     }
     public class EmployeeDto
     {
+<<<<<<< HEAD
         public int EmployeeID { get; set; }
+=======
+        [Key]
+        public int EmployeeId { get; set; }
+>>>>>>> 31adf2e37ef14817aae916a891b3b01a21623f18
 
         public string EmployeeFirstName { get; set; }
 
@@ -44,5 +49,8 @@ namespace HTTP5212_HospitalProject_Team1.Models
 
         public DateTime EmployeeJoinDate { get; set; }
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> 31adf2e37ef14817aae916a891b3b01a21623f18
 }

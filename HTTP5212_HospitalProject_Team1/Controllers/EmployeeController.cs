@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
+Microsoft.AspNetCore.Authorization;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
@@ -39,6 +40,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Employee/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             //HttpClient client = new HttpClient() { };
@@ -68,10 +70,11 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: Employee/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Employee employee)
         {
-            string url = "https://localhost:44397/api/EmployeeData/addemployee";
+            string url = "EmployeeData/addemployee";
 
             //JavaScriptSerializer jss = new JavaScriptSerializer();
             string jsonpayload = jss.Serialize(employee);
@@ -99,17 +102,20 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return View(selectedemployee);
         }
 
-        // POST: Employee/Edit/5
+        // POST: Employee/Update/5
+        [Authorize]
         [HttpPost]
         public ActionResult Update(int id, Employee employee)
         {
-            string url = "EmployeeData/updateEmployee/" + id;
+            string url = "EmployeeData/UpdateEmployee/" + id;
             Debug.WriteLine(url + "This?");
             string jsonpayload = jss.Serialize(employee);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
+            Debug.WriteLine(url);
             Debug.WriteLine(content);
+            Debug.WriteLine(response);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("List");
@@ -122,6 +128,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Employee/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
              string url = "employeedata/findemployee/" + id;
@@ -131,6 +138,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: Employee/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id)
         {
