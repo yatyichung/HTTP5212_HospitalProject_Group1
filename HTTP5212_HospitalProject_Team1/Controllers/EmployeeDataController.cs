@@ -17,8 +17,17 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
     public class EmployeeDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
+          /// <summary>
+        /// Returns all employees in the system.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: all employees in the database
+        /// </returns>
+        /// <example>
+         /// GET: api/EmployeesData/ListEmployee
+        /// </example>
 
-        // GET: api/EmployeesData/ListEmployee
         [HttpGet]
         public IEnumerable<EmployeeDto> ListEmployee()
         {
@@ -34,8 +43,17 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             }));
             return EmployeeDtos;
         }
-
-        // GET: api/EmployeesData/FindEmployee/5
+        
+           /// <summary>
+        /// Returns employee in the system with specified id.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: employees in the database with specified id.
+        /// </returns>
+        /// <example>
+        /// GET: api/EmployeesData/FindEmployee/5
+        /// </example>
+        
         [Authorize]
         [ResponseType(typeof(Employee))]
         [HttpGet]
@@ -57,8 +75,17 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return Ok(EmployeeDto);
         }
+        
+         /// <summary>
+        /// update employee in the system with specified id.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: update employees in the database with specified id.
+        /// </returns>
+        /// <example>
+        /// POST: api/EmployeesData/UpdateEmployee/5
+        /// </example>
 
-        // POST: api/EmployeesData/UpdateEmployee/5
          [Authorize]
         [ResponseType(typeof(void))]
         [HttpPost]
@@ -101,8 +128,17 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/EmployeesData/AddEmployee
+        
+         /// <summary>
+        /// add employee in the database.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: add employee in the database.
+        /// </returns>
+        /// <example>
+        /// POST: api/EmployeesData/AddEmployee
+        /// </example>
+        
          [Authorize]
         [ResponseType(typeof(Employee))]
         [HttpPost]
@@ -118,8 +154,17 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = employee.EmployeeId }, employee);
         }
-
+        
+         /// <summary>
+        /// delete employee in the database with specified id.
+        /// </summary>
+        /// <returns>
+        /// CONTENT: delete employee in the database with specified id.
+        /// </returns>
+        /// <example>
         // POST: api/EmployeesData/DeleteEmployee/5
+        /// </example>
+
          [Authorize]
         [ResponseType(typeof(Employee))]
         [HttpPost]
