@@ -24,6 +24,8 @@ Controller (RoomDataController.cs, RoomController.cs.cs)
 Others: technician (solving errors, debug GitHub collobration problems), assists Ravi 
 
 <h3>Beth</h3>
+<b>ADDED:</b> ListServicesForDepartment, Department ViewModel, Authorization
+<br>
 Models (<a href="https://github.com/yatyichung/HTTP5212_HospitalProject_Group1/blob/master/HTTP5212_HospitalProject_Team1/Models/Service.cs">services.cs</a>, <a href="https://github.com/yatyichung/HTTP5212_HospitalProject_Group1/blob/master/HTTP5212_HospitalProject_Team1/Models/Department.cs">departments.cs</a>)
 <br>
 Views (service, department)
