@@ -7,7 +7,8 @@ using System.Net.Http;
 using System.Diagnostics;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
-
+using Microsoft.AspNetCore.Authorization;
+using HTTP5212_HospitalProject_Team1.Models.ViewModels;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
@@ -22,6 +23,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Department/List
+        [System.Web.Mvc.Authorize]
         public ActionResult List()
         {
             string url = "DepartmentData/ListDepartments";
@@ -31,6 +33,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Department/Details/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Details(int id)
         {
             string url = "DepartmentData/FindDepartment/" + id;
@@ -45,6 +48,8 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Department/New
+        [System.Web.Mvc.Authorize]
+
         public ActionResult New()
         {
             return View();
@@ -52,6 +57,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Department/Create
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Create(Department department)
         {
             string url = "DepartmentData/adddepartment";
@@ -70,6 +76,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Department/Edit/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Edit(int id)
         {
             string url = "DepartmentData/findDepartment/" + id;
@@ -80,6 +87,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Department/Update/5
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Update(int id, Department department)
         {
             string url = "DepartmentData/updatedepartment/" + id;
@@ -98,6 +106,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Department/Delete/5
+        [System.Web.Mvc.Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "DepartmentData/finddepartment/" + id;
@@ -108,6 +117,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Department/Delete/5
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Delete(int id)
         {
             string url = "DepartmentData/deletedepartment/" + id;

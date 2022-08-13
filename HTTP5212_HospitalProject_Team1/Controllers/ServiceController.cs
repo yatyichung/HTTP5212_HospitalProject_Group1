@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Diagnostics;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
+using Microsoft.AspNetCore.Authorization;
 using HTTP5212_HospitalProject_Team1.Models.ViewModels;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
@@ -22,6 +23,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Service/List
+        [System.Web.Mvc.Authorize]
         public ActionResult List()
         {
             string url = "ServiceData/ListServices";
@@ -31,6 +33,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Service/Details/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Details(int id)
         {
             string url = "ServiceData/FindService/" + id;
@@ -45,12 +48,18 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Service/New
+        [System.Web.Mvc.Authorize]
         public ActionResult New()
         {
-            return View();
+            string url = "departmentdata/listdepartments";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> ServOptions = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+
+            return View(ServOptions);
         }
 
         // POST: Service/Create
+        [System.Web.Mvc.Authorize]
         [HttpPost]
         public ActionResult Create(Service service)
         {
@@ -70,6 +79,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Service/Edit/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Edit(int id)
         {
             UpdateService ViewModel = new UpdateService();
@@ -89,6 +99,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Service/Update/5
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Update(int id, Service service)
         {
             string url = "ServiceData/updateservice/" + id;
@@ -107,6 +118,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Service/Delete/5
+        [System.Web.Mvc.Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "ServiceData/findservice/" + id;
@@ -117,6 +129,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Service/Delete/5
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Delete(int id)
         {
             string url = "ServiceData/deleteservice/" + id;

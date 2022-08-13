@@ -17,7 +17,12 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// returns all services
+        /// </summary>
+        /// <example>
         // GET: api/ServiceData/ListServices
+        /// </example>
         [HttpGet]
         public IEnumerable<ServiceDto> ListServices()
         {
@@ -36,7 +41,29 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             return ServiceDtos;
         }
 
+        [ResponseType(typeof(ServiceDto))]
+        [HttpGet]
+        public IHttpActionResult ListServicesForDept(int id)
+        {
+            List<Service> Services = db.Services.Where(a => a.serv_id == id).ToList();
+            List<ServiceDto> ServiceDtos = new List<ServiceDto>();
+
+            Services.ForEach(s => ServiceDtos.Add(new ServiceDto()
+            {
+                serv_id = s.serv_id,
+                serv_name = s.serv_name,
+                DepartmentId = s.Department.dept_id,
+                DepartmentName = s.Department.dept_name,
+            }));
+
+            return Ok(ServiceDtos);
+        }
+        /// <summary>
+        /// FIND- returns all services
+        /// </summary>
+        /// <example>
         // GET: api/ServiceData/FindService/5
+        /// </example>
         [ResponseType(typeof(Service))]
         [HttpGet]
         public IHttpActionResult FindService(int id)
@@ -58,8 +85,12 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
             return Ok(ServiceDto);
         }
-
+        /// <summary>
+        /// updates selected service
+        /// </summary>
+        /// <example>
         // POST: api/ServiceData/UpdateService/5
+        /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateService(int id, Service service)
@@ -93,8 +124,12 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             }
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        /// <summary>
+        /// add new service
+        /// </summary>
+        /// <example>
         // POST: api/ServiceData/AddService
+        /// </example>
         [ResponseType(typeof(Service))]
         [HttpPost]
         public IHttpActionResult AddService(Service service)
@@ -108,8 +143,12 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             
             return CreatedAtRoute("DefaultApi", new { id = service.serv_id }, service);
         }
-
+        /// <summary>
+        /// delete selected service
+        /// </summary>
+        /// <example>
         // POST: api/ServiceData/DeleteService/5
+        /// </example>
         [ResponseType(typeof(Service))]
         [HttpPost]
         public IHttpActionResult DeleteService(int id)

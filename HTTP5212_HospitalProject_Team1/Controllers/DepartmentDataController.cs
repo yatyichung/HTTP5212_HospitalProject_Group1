@@ -17,24 +17,54 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         {
             private ApplicationDbContext db = new ApplicationDbContext();
 
-            // GET: api/DepartmentData/ListDepartments
-            [HttpGet]
+        /// <summary>
+        /// returns all departments
+        /// </summary>
+        /// <example>
+        // GET: api/DepartmentData/ListDepartments
+        /// </example>
+        [ResponseType(typeof(DepartmentDto))]
+        [HttpGet]
             public IEnumerable<DepartmentDto> ListDepartments()
             {
                 List<Department> Departments = db.Departments.ToList();
                 List<DepartmentDto> DepartmentDtos = new List<DepartmentDto>();
-
                 Departments.ForEach(d => DepartmentDtos.Add(new DepartmentDto()
                 {
                     dept_id = d.dept_id,
                     dept_name = d.dept_name,
-                    dept_desc = d.dept_desc
+                    dept_desc = d.dept_desc,
+                    serv_id = d.serv_id,
+                    serv_name = d.serv_name
                 }));
                 return DepartmentDtos;
             }
+        [ResponseType(typeof(DepartmentDto))]
+        [HttpGet]
+        public IHttpActionResult ListServicesForDept(int id)
+        {
+            List<Department> Departments = db.Departments.Where(a => a.serv_id == id).ToList();
+            List<DepartmentDto> DepartmentDtos = new List<DepartmentDto>();
 
-            // GET: api/DepartmentData/FindDepartment/5
-            [ResponseType(typeof(Department))]
+            Departments.ForEach(d => DepartmentDtos.Add(new DepartmentDto()
+            {
+                dept_id = d.dept_id,
+                dept_name = d.dept_name,
+                dept_desc = d.dept_desc,
+                serv_id = d.serv_id,
+                serv_name = d.serv_name
+
+            }));
+
+            return Ok(DepartmentDtos);
+        }
+        /// <summary>
+        /// FIND- returns all departments
+        /// </summary>
+        /// <example>
+        // GET: api/DepartmentData/FindDepartment/5
+        /// </example>
+        [ResponseType(typeof(DepartmentDto))]
             [HttpGet]
             public IHttpActionResult FindDepartment(int id)
             {
@@ -53,9 +83,13 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
                 return Ok(DepartmentDto);
             }
-
-            // POST: api/DepartmentData/UpdateDepartment/5
-            [ResponseType(typeof(void))]
+        /// <summary>
+        /// updates selected department
+        /// </summary>
+        /// <example>
+        // POST: api/DepartmentData/UpdateDepartment/5
+        /// </example>
+        [ResponseType(typeof(void))]
             [HttpPost]
             public IHttpActionResult UpdateDepartment(int id, Department department)
             {
@@ -88,9 +122,13 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 }
                 return StatusCode(HttpStatusCode.NoContent);
             }
-
-            // POST: api/DepartmentData/AddDepartment
-            [ResponseType(typeof(Department))]
+        /// <summary>
+        /// add new department
+        /// </summary>
+        /// <example>
+        // POST: api/DepartmentData/AddDepartment
+        /// </example>
+        [ResponseType(typeof(Department))]
             [HttpPost]
             public IHttpActionResult AddDepartment(Department department)
             {
@@ -102,9 +140,13 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
                 db.SaveChanges();
                 return CreatedAtRoute("DefaultApi", new { id = department.dept_id }, department);
             }
-
-            // POST: api/DepartmentData/DeleteDepartment/5
-            [ResponseType(typeof(Department))]
+        /// <summary>
+        /// delete selected department
+        /// </summary>
+        /// <example>
+        // POST: api/DepartmentData/DeleteDepartment/5
+        /// </example>
+        [ResponseType(typeof(Department))]
             [HttpPost]
             public IHttpActionResult DeleteDepartment(int id)
             {

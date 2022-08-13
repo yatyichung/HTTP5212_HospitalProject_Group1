@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/HTTP5212_HospitalProject_Team1/Migrations/202208130450467_serv.resx
+/HTTP5212_HospitalProject_Team1/Migrations/202208130450467_serv.Designer.cs
+/HTTP5212_HospitalProject_Team1/Migrations/202208130450467_serv.cs
