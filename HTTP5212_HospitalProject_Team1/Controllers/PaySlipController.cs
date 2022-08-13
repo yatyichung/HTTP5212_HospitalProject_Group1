@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Diagnostics;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
+using Microsoft.AspNetCore.Authorization;
 using HTTP5212_HospitalProject_Team1.Models.ViewModels;
 
 
