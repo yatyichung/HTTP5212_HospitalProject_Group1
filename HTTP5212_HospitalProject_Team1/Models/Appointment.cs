@@ -26,6 +26,7 @@ namespace HTTP5212_HospitalProject_Team1.Models
     }
     public class AppointmentDto
     {
+        [Key]
         public int AppointmentId { get; set; }
 
         public string TypeOfAppointment { get; set; }

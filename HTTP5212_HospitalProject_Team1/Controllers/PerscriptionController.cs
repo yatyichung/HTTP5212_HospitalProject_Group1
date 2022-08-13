@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Diagnostics;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
@@ -21,7 +22,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
             client.BaseAddress = new Uri("https://localhost:44397/api/");
         }
 
-
+        [System.Web.Mvc.Authorize]
         // GET: Perscription/List
         public ActionResult List()
         {
@@ -34,6 +35,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Perscription/Details/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Details(int id)
         {
             string url = "PerscriptionData/FindPerscription/" + id;
@@ -63,6 +65,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Perscription/Create
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Create(Perscription perscription)
         {
             Debug.WriteLine("the inputted perscription is:");
@@ -93,6 +96,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Perscription/Edit/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Edit(int id)
         {
             string url = "PerscriptionData/FindPerscription/" + id;
@@ -107,6 +111,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Perscription/Update/5
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Update(int id, Perscription perscription)
         {
             string url = "PerscriptionData/UpdatePerscription/" + id;
@@ -128,6 +133,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Perscription/Delete/5
+        [System.Web.Mvc.Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "PerscriptionData/FindPerscription/" + id;
@@ -138,6 +144,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Perscription/Delete/5
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Delete(int id)
         {
             string url = "PerscriptionData/DeletePerscription/" + id;

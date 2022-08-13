@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Diagnostics;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
+using Microsoft.AspNetCore.Authorization;
 using HTTP5212_HospitalProject_Team1.Models.ViewModels;
 
 
@@ -27,6 +28,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
 
         // GET: Appointment/List
+        [System.Web.Mvc.Authorize]
         public ActionResult List()
         {
             //retrieve a list of Appointments from appointmentdatacontroller
@@ -47,6 +49,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Appointment/Details/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Details(int id)
         {
             //retrieve one shift from shiftdatacontroller
@@ -71,6 +74,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Appointment/New
+        [System.Web.Mvc.Authorize]
         public ActionResult New()
         {
             //api/AppointmentData/AddAppointment
@@ -84,6 +88,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Appointment/Create
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Create(Appointment appointment)
         {
             Debug.WriteLine("the json payload is:");
@@ -115,6 +120,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Appointment/Edit/5
+        [System.Web.Mvc.Authorize]
         public ActionResult Edit(int id)
         {
             
@@ -127,6 +133,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Appointment/Update/5
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Update(int id, Appointment appointment)
         {
             string url = "UpdateAppointment/" + id;
@@ -148,6 +155,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Appointment/Delete/5
+        [System.Web.Mvc.Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "FindAppointment/" + id;
@@ -158,6 +166,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
 
         // POST: Appointment/Delete/5
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Delete(int id)
         {
             string url = "DeleteAppointment/" + id;
