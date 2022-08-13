@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using HTTP5212_HospitalProject_Team1.Models;
 using System.Web.Script.Serialization;
+Microsoft.AspNetCore.Authorization;
 
 namespace HTTP5212_HospitalProject_Team1.Controllers
 {
@@ -39,6 +40,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Employee/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             //HttpClient client = new HttpClient() { };
@@ -68,6 +70,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: Employee/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Employee employee)
         {
@@ -100,6 +103,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: Employee/Update/5
+        [Authorize]
         [HttpPost]
         public ActionResult Update(int id, Employee employee)
         {
@@ -124,6 +128,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // GET: Employee/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
              string url = "employeedata/findemployee/" + id;
@@ -133,6 +138,7 @@ namespace HTTP5212_HospitalProject_Team1.Controllers
         }
 
         // POST: Employee/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id)
         {
